@@ -9,7 +9,7 @@ document.getElementById('create-site-form').addEventListener('submit', function(
 
 function fetchSites() {
     // Example fetch request; adjust the URL as needed.
-    fetch('get_sites.php')
+    fetch('backend/get_sites.php')
     .then(response => response.json())
     .then(sites => {
         const sitesList = document.getElementById('sites-list');
@@ -29,7 +29,7 @@ function createSite() {
     const siteData = document.getElementById('site-data').value;
 
     // Example fetch request; adjust the URL and method as needed.
-    fetch('create_site.php', {
+    fetch('backend/create_site.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded', },
         body: `site_name=${encodeURIComponent(siteName)}&site_data=${encodeURIComponent(siteData)}`
