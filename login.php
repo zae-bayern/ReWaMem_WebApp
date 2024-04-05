@@ -5,7 +5,7 @@
         input, button { margin-bottom: 10px; padding: 10px; }
         button { cursor: pointer; }
     </style>
-    <form action="login.php" method="post">
+    <form action="backend/login.php" method="post">
         <input type="text" name="username" placeholder="Username" required>
         <input type="password" name="password" placeholder="Password" required>
         <button type="submit">Login</button>

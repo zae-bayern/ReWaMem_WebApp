@@ -28,8 +28,4 @@ Wenden Sie sich bitte an den DTV in Bonn:</br>
 info@dtv-bonn.de, Tel.: +49 228 71002270
 </p>
 
-<p>
-  <a href="login.php">Zum Login</a>
-</p>
-
 <?php require_once('footer.php'); ?>

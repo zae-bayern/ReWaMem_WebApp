@@ -11,7 +11,7 @@
 <header>
     <img src="logo.png" alt="Logo" style="height: 50px;"> <!-- Path to your logo -->
     <nav>
-        <?php if(isset($_SESSION['username'])): ?>
+        <?php if(isset($_SESSION['user_id'])): ?>
             <ul>
                 <li><a href="index.php">Home</a></li>
                 <li><a href="dashboard.php">Dashboard</a></li>
@@ -21,7 +21,7 @@
         <?php endif; ?>
     </nav>
     <div class="user-info">
-        <?php if(isset($_SESSION['username'])): ?>
+        <?php if(isset($_SESSION['user_id'])): ?>
             <p>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</p>
             <a href="logout.php">Logout</a> <!-- Path to your logout script -->
         <?php else: ?>

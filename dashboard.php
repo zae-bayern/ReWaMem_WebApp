@@ -1,6 +1,14 @@
 <?php require_once('header.php');?>
 
-<!-- Add this:
+<?php
+// Check if the user is logged in, if not then redirect to login page
+if (!isset($_SESSION['user_id'])) {
+    // Redirect to the login page:
+    header("Location: login.php");
+    exit;
+}
+?>
+
     <style>
         body { font-family: Arial, sans-serif; margin: 20px; }
         #sites-list { margin-top: 20px; }
@@ -9,7 +17,6 @@
         input, button { margin: 5px 0; padding: 10px; }
         button { cursor: pointer; }
     </style> 
--->
 
     <h2>Create New Site</h2>
     <form id="create-site-form">
