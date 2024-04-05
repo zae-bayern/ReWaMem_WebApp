@@ -11,12 +11,14 @@
 <header>
     <img src="logo.png" alt="Logo" style="height: 50px;"> <!-- Path to your logo -->
     <nav>
-        <ul>
-            <li><a href="index.php">Home</a></li>
-            <li><a href="dashboard.php">Dashboard</a></li>
-            <li><a href="data-visualization.php">Data Visualization</a></li>
-            <!-- Add more links as needed -->
-        </ul>
+        <?php if(isset($_SESSION['username'])): ?>
+            <ul>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="dashboard.php">Dashboard</a></li>
+                <li><a href="data-visualization.php">Data Visualization</a></li>
+                <!-- Add more links as needed -->
+            </ul>
+        <?php endif; ?>
     </nav>
     <div class="user-info">
         <?php if(isset($_SESSION['username'])): ?>

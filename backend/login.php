@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['id'];
-        header("Location: dashboard.html");
+        header("Location: dashboard.php");
     } else {
         // Handle login failure
         echo "Invalid login credentials.";

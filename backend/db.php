@@ -1,9 +1,9 @@
 <?php
 
-$host = 'localhost';
-$dbname = 'your_db';
-$username = '';
-$password = '';
+$host = 'localhost';  // MySQL host
+$dbname = 'textildb'; // MySQL database
+$username = 'root';   // MySQL username
+$password = 'usbw';   // associated password
 
 try {
   $db = new PDO('mysql:host=$host;dbname=$dbname', $username, $password);

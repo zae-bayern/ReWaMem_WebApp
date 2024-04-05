@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+<?php require_once('header.php');?>
+
+<!-- Add this:
     <style>
         body { font-family: Arial, sans-serif; margin: 20px; }
         #sites-list { margin-top: 20px; }
@@ -11,9 +8,9 @@
         form { margin-bottom: 20px; }
         input, button { margin: 5px 0; padding: 10px; }
         button { cursor: pointer; }
-    </style>
-</head>
-<body>
+    </style> 
+-->
+
     <h2>Create New Site</h2>
     <form id="create-site-form">
         <input type="text" id="site-name" placeholder="Site Name" required>
@@ -27,5 +24,4 @@
     </div>
 
     <script src="dashboard.js"></script>
-</body>
-</html>
+<?php require_once('footer.php');?>

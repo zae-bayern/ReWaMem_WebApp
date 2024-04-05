@@ -1,3 +1,4 @@
+<?php require_once('header.php'); ?>
 <h3>Impressum</h3>
 
 <p><strong>Herausgeber</strong></p>
@@ -37,3 +38,4 @@
 
 
 </div></div></div>
+<?php require_once('footer.php'); ?>

@@ -1,3 +1,4 @@
+<?php require_once('header.php'); ?>
 <h3>Datenschutz</h3>
 
 <p>Mit dieser Information setzen wir die Informationspflicht der EU-Datenschutzgrundverordnung (DS-GVO) auf Basis der gesetzlichen Vorgaben für unsere (Ansprech-) Partner und Kunden so um, dass Sie mit unserem Datenschutzmanagement zufrieden und sicher sind. Sollten Sie weitere Wünsche zu Ihrem Datenschutz haben, nehmen wir Anregungen gerne entgegen. Sie können uns über die angegebenen Kontakte erreichen – gegebenenfalls durch ein Kontaktformular, worüber Sie uns freiwillig Ihren Namen, Ihre E-Mail Adresse sowie weitere Kontaktdaten bereitstellen, damit wir Sie wiederum kontaktieren können. &nbsp;</p>
@@ -87,3 +88,4 @@
 
 
 </div></div></div>
+<?php require_once('footer.php'); ?>

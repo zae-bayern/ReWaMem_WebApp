@@ -1,3 +1,5 @@
+<?php require_once('header.php'); ?>
+
 <h2>
 Herzlich Willkommen zum</br>
 <span>Onlinetool Ökobench für die Textilpflegebranche</span>
@@ -25,3 +27,9 @@ Sollten Sie mit Ihrem Betrieb kein DTV-Mitglied sein, können Sie sich dennoch z
 Wenden Sie sich bitte an den DTV in Bonn:</br>
 info@dtv-bonn.de, Tel.: +49 228 71002270
 </p>
+
+<p>
+  <a href="login.php">Zum Login</a>
+</p>
+
+<?php require_once('footer.php'); ?>
