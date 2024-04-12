@@ -4,17 +4,30 @@ require_once 'db.php';
 
 if (isset($_SESSION['user_id'])) {
   $sql = "SELECT site_name, data FROM sites";
-  $stmt = $pdo->prepare($sql);
+  $stmt = $db->prepare($sql);
+  if (!$stmt) {
+    echo "Prepare failed: (" . $db->errno . ") " . $db->error;
+    exit;
+  }
+
   $stmt->execute();
+  $result = $stmt->get_result();
 
-  $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  $results = [];
+  while ($row = $result->fetch_assoc()) {
+    $results[] = $row;
+  }
 
+  $stmt->close();
+
+  header('Content-Type: application/json');
   echo json_encode($results);
 }
 else {
   echo "Unauthorized access.";
 }
 ?>
+
 <?php
 /*
 function fetchDataAndDisplay() {

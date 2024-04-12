@@ -31,4 +31,5 @@ if (!isset($_SESSION['user_id'])) {
     </div>
 
     <script src="dashboard.js"></script>
+
 <?php require_once('footer.php');?>
