@@ -9,6 +9,8 @@ if (!isset($_SESSION['user_id'])) {
 }
 ?>
 
+<!--TODO: Pass sites to display as POST argument to this -->
+
     <div id="data-display"></div>
     <div id="plotly-chart" style="width:100%;max-width:700px;height:500px;"></div>
 
