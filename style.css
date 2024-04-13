@@ -65,6 +65,29 @@ header nav ul li {
     margin-right: 10px;
 }
 
+.footer {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f5f5f7;
+}
+
+footer nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+footer nav ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
 .user-info p, .user-info a {
     display: inline;
     margin-left: 10px;
