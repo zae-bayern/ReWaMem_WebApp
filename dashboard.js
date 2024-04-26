@@ -8,18 +8,21 @@ document.getElementById('create-site-form').addEventListener('submit', function(
 });
 
 function fetchSites() {
-    // Example fetch request; adjust the URL as needed.
     fetch('backend/get_sites.php')
     .then(response => response.json())
     .then(sites => {
         const sitesList = document.getElementById('sites-list');
-        sitesList.innerHTML = ''; // Clear current sites
-        sites.forEach(site => {
-            const div = document.createElement('div');
-            div.className = 'site';
-            div.innerHTML = `<strong>${site.site_name}</strong><p>${site.site_data}</p>`;
-            sitesList.appendChild(div);
-        });
+        if (sites.length === 0 ) {
+        }
+        else {
+            sitesList.innerHTML = ''; // Clear current sites
+            sites.forEach(site => {
+                const div = document.createElement('div');
+                div.className = 'site';
+                div.innerHTML = `<strong>${site.site_name}</strong><p>${site.site_data}</p>`;
+                sitesList.appendChild(div);
+            });
+        }
     })
     .catch(error => console.error('Error fetching sites:', error));
 }

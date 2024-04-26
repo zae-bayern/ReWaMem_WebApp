@@ -18,17 +18,22 @@ if (!isset($_SESSION['user_id'])) {
         button { cursor: pointer; }
     </style> 
 
-    <h2>Create New Site</h2>
+
+    <h2>My Sites</h2>
+    <div id="sites-list">
+        <p>No sites yet.</p>
+        <!-- Sites will be added here by JavaScript -->
+    </div>
+
+    <h3>Create New Site</h3>
+    <a href="datenerfassung.php">Add new</a>
+    <!--
     <form id="create-site-form">
         <input type="text" id="site-name" placeholder="Site Name" required>
         <textarea id="site-data" placeholder="Site Data" required></textarea>
         <button type="submit">Create Site</button>
     </form>
-
-    <h2>My Sites</h2>
-    <div id="sites-list">
-        <!-- Sites will be added here by JavaScript -->
-    </div>
+    -->
 
     <script src="dashboard.js"></script>
 
