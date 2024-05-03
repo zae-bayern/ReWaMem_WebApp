@@ -5,6 +5,7 @@ require_once 'db.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['user_id'])) {
     $userId = $_SESSION['user_id'];
     $siteName = $_POST['name'] ?? $userId . time();
+    $isUpdate = $_POST['isUpdate'] ?? false;
 
     // Form fields from "datenerfassung.php"
     $data = [
@@ -40,26 +41,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['user_id'])) {
 
     $siteData = json_encode($data);
 
-    // Prepare the MySQLi SQL insert statement
-    $stmt = $db->prepare("INSERT INTO sites (user_id, site_name, site_data) VALUES (?, ?, ?)");
+    // Prepare the MySQLi SQL insert or update statement
+    if (!$isUpdate) {
+        $stmt = $db->prepare("INSERT INTO sites (user_id, site_name, site_data) VALUES (?, ?, ?)");
+    } else {
+        $stmt = $db->prepare("UPDATE sites SET site_data = ? WHERE user_id = ? AND site_name = ?");  //site_name needs to be same as of old record !
+    }
+
     if (!$stmt) {
         echo "Prepare failed: (" . $db->errno . ") " . $db->error;
         exit;
     }
 
-    // Bind parameters
-    $stmt->bind_param("iss", $userId, $siteName, $siteData);
+    if (!$isUpdate) {
+        $stmt->bind_param("iss", $userId, $siteName, $siteData);
+    } else {
+        $stmt->bind_param("sis", $data, $userId, $siteName);
+    }
     $success = $stmt->execute();
 
     if ($success) {
-        echo "Site created successfully.";
+        echo "Site created/updated successfully.";
     } else {
-        echo "Error creating site: " . $stmt->error;
+        echo "Error creating/updating site: " . $stmt->error;
     }
 
     $stmt->close();
 } else {
-    // Handle unauthorized access or wrong request method
     echo "Unauthorized access.";
 }
 ?>
