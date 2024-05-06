@@ -3,7 +3,7 @@ session_start();
 require_once 'db.php';
 
 if (isset($_SESSION['user_id'])) {
-  $sql = "SELECT site_name, data FROM sites";
+  $sql = "SELECT site_name, site_data FROM sites";
   $stmt = $db->prepare($sql);
   if (!$stmt) {
     echo "Prepare failed: (" . $db->errno . ") " . $db->error;

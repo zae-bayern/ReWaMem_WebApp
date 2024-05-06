@@ -4,7 +4,7 @@ require_once 'db.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['user_id'])) {
     $userId = $_SESSION['user_id'];
-    $siteName = $_POST['name'] ?? $userId . time();
+    $siteName = $_POST['name'] ?? $userId . $_POST['company'];  // not unique yet
     $isUpdate = $_POST['isUpdate'] ?? false;
 
     // Form fields from "datenerfassung.php"
@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['user_id'])) {
     if (!$isUpdate) {
         $stmt = $db->prepare("INSERT INTO sites (user_id, site_name, site_data) VALUES (?, ?, ?)");
     } else {
-        $stmt = $db->prepare("UPDATE sites SET site_data = ? WHERE user_id = ? AND site_name = ?");  //site_name needs to be same as of old record !
+        $stmt = $db->prepare("UPDATE sites SET site_data = ? WHERE user_id = ? AND site_name = ?");
     }
 
     if (!$stmt) {
