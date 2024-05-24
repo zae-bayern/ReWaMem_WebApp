@@ -18,3 +18,5 @@ function performCalculation(type, variables) {
       document.getElementById('result').textContent = 'Network error: ' + error;
     });
 }
+
+// performCalulation('test', [10.0, 20.5, 5.667])
