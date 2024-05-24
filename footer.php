@@ -16,6 +16,6 @@
   </tr>
   </table>
 </footer>
-<script type="text/javascript" src="theme-toogle.js"></script>
+<script type="text/javascript" src="theme-toggle.js"></script>
 </body>
 </html>
