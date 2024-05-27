@@ -75,10 +75,15 @@ header {
     transition: background-color 0.3s, color 0.3s;
 }
 
-/*
-header img {
+.header-logo {
+  content: url('logo.png');
+  height: 50px;
 }
-*/
+
+[data-theme="dark"] .header-logo {
+  content: url('logo-dark.png');
+  height: 50px;
+}
 
 header nav ul {
     list-style: none;
