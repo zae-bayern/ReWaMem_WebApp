@@ -9,7 +9,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 ?>
 
-<form method=post action="/backend/create_site.php">
+<form method=post action="backend/create_site.php">
 
 	<div id=bodyleft>
 		<p class=side>Bitte füllen Sie für jeden Betrieb/Betriebsteil des Unternehmens
@@ -18,16 +18,18 @@ if (!isset($_SESSION['user_id'])) {
 
 	<div id=bodymain>
 		<input type=hidden name=id value="">
-		<div class=defaultbutton><input type=submit name=save value=save></div>
+		<div class=defaultbutton><input type=submit name=save value=speichern></div>
 
-		<div class=input><label class=left>Firma</label>
-			<input type=text class=text name=company value="">
-			<input type=submit class=button name=new value="Daten für einen weiteren Betrieb erfassen">
-		</div>
+		<div id=bodymainhead>
+			<div class=input><label class=left>Firma </label>
+				<input type=text class=text name=company value="">
+				<input type=submit class=button name=new value="Daten für einen weiteren Betrieb erfassen">
+			</div>
 
-		<div class=input><label class=left>Betrieb</label>
-			<input type=text class=text name=name value="">
-			<input type=submit class=button name=select value="Vorhandene Betriebsdaten bearbeiten">
+			<div class=input><label class=left>Betrieb</label>
+				<input type=text class=text name=name value="">
+				<input type=submit class=button name=select value="Vorhandene Betriebsdaten bearbeiten">
+			</div>
 		</div>
 
 		<div class=input>
@@ -274,16 +276,14 @@ if (!isset($_SESSION['user_id'])) {
 			})();
 		</script>
 
-	</div>
-
-	<p class=side>Wählen Sie einen Zeitraum:<br>
-		Sie haben die Möglichkeit, die Daten für ein bestimmtes Jahr,
-		einen bestimmten Monat oder einen bestimmten Tag auswerten zu lassen.
-		</div>
 
 	<h2>Eingabe der Verbräuche:</h2>
 
 	<div id=dateselect>
+	<div>Wählen Sie einen Zeitraum:<br>
+		Sie haben die Möglichkeit, die Daten für ein bestimmtes Jahr,
+		einen bestimmten Monat oder einen bestimmten Tag auswerten zu lassen.
+	</div>
 		<select name=year>
 			<option value="">Jahr</option>
 			<?php
@@ -429,6 +429,8 @@ if (!isset($_SESSION['user_id'])) {
 
 	</div>
 
+	</div>
+	
 	<div class=clearer></div>
 	<p>&nbsp;</p>
 
@@ -442,5 +444,6 @@ if (!isset($_SESSION['user_id'])) {
 		<div class=clearer></div>
 	</div>
 </form>
+
 
 <?php require_once ('footer.php'); ?>

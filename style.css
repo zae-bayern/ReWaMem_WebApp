@@ -35,8 +35,6 @@ body {
     color: var(--text-color);
     transition: background-color 0.3s, color 0.3s;
 
-    border-left: 5px solid #fff;
-    border-right: 5px solid #fff;
     padding: 0 10px;
     box-sizing: border-box;
     display: flex;
@@ -184,7 +182,6 @@ button:hover {
     }
 }
 
-/* Dark Mode Switch */
 .theme-switcher {
   position: relative;
   display: inline-block;
@@ -246,4 +243,46 @@ input:checked + .slider:before {
 .toggle-button {
   width: 100px;
   height: 30px;
+}
+
+/*Data input*/
+#bodyleft {
+  position: absolute;
+  float: left;
+  width: 15vw;
+}
+
+#bodymain {
+  float: right;
+  max-width: 60vw;
+}
+
+#bodymain > #bodymainhead {
+  margin: 20px;
+}
+
+#bodymain input {
+  margin-top: 12px;
+}
+
+#bodymain input[type="hidden"] {
+  visibility: none;
+}
+
+#bodymain input[type="submit"] {
+  width: 25%;
+}
+
+#bodymain label input[type="text"] {
+  float: left;
+}
+
+#bodymain input[type="text"] {
+  width: 50%;
+  text-align: right;
+}
+
+#clearer {
+  height: 20px;
+  width: 100%;
 }
