@@ -10,7 +10,7 @@
 <body>
 <header>
     <img src="logo.png" alt="Logo" style="height: 50px;"> 
-    <nav>
+    <nav style="padding-right: 60px;">
         <?php if(isset($_SESSION['user_id'])): ?>
             <ul>
                 <li><a href="index.php">Home</a></li>

@@ -1,18 +1,18 @@
 document.addEventListener('DOMContentLoaded', function() {
-  var button = document.getElementById('dark-mode-toggle');
-  
-  button.addEventListener('click', function() {
-      document.body.classList.toggle('dark-theme');
-      // Optionally, save the theme preference to localStorage
-      if (document.body.classList.contains('dark-theme')) {
-          localStorage.setItem('theme', 'dark');
-      } else {
-          localStorage.removeItem('theme');
-      }
-  });
+    var button = document.getElementById('dark-mode-toggle');
+    
+    button.addEventListener('click', function() {
+        if (document.documentElement.getAttribute('data-theme') === 'dark') {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.removeItem('theme');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+    });
 
-  // Optionally, load the saved theme preference on page load
-  if (localStorage.getItem('theme') === 'dark') {
-      document.body.classList.add('dark-theme');
-  }
+    // Load the saved theme preference on page load
+    if (localStorage.getItem('theme') === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    }
 });
