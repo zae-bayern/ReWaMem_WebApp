@@ -1,7 +1,8 @@
+</div>  <!-- container -->
 <footer>
   <table>
   <tr>
-    <td style="text-align: left; padding-right: 260px;">
+    <td style="text-align: left; padding-right: 50vw;">
       <p>&copy; <?php echo date("Y");?> TextilDB ReWaMem</p>
     </td>
     <td style="text-align: right;">

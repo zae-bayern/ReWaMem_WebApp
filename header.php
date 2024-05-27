@@ -10,7 +10,7 @@
 <body>
 <header>
     <img src="logo.png" alt="Logo" class="header-logo" style="height: 50px;"> 
-    <nav style="padding-right: 60px; padding-left: 15px;">
+    <nav style="padding-right: 40vw; padding-left: 15px;">
         <?php if(isset($_SESSION['user_id'])): ?>
             <ul>
                 <li><a href="index.php">Home</a></li>
@@ -33,3 +33,4 @@
         <?php endif; ?>
     </div>
 </header>
+<div class="container">
