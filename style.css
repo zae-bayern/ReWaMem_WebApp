@@ -231,7 +231,6 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-/* Rounded sliders */
 .slider.round {
   border-radius: 34px;
 }
@@ -247,9 +246,11 @@ input:checked + .slider:before {
 
 /*Data input*/
 #bodyleft {
-  position: absolute;
+  position: fixed;
   float: left;
   width: 15vw;
+  margin-top: 21vh;
+  margin-left: 2%;
 }
 
 #bodymain {
@@ -257,8 +258,21 @@ input:checked + .slider:before {
   max-width: 60vw;
 }
 
-#bodymain > #bodymainhead {
+#bodymain #bodymainhead {
   margin: 20px;
+}
+
+#bodymain #bodymainhead input[type="submit"] {
+  position: relative;
+  width: 50%;
+  margin-top: -6px;
+  margin-left: 50px;
+}
+
+#bodymain #bodymainhead input[type="text"] {
+  position: relative;
+  width: 70%;
+  margin-top: -6px;
 }
 
 #bodymain input {
@@ -275,14 +289,49 @@ input:checked + .slider:before {
 
 #bodymain label input[type="text"] {
   float: left;
+  align-self: left;
 }
 
-#bodymain input[type="text"] {
-  width: 50%;
+#bodymain .input {
+    max-width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#bodymain .input input[type="text"] {
+  width: 200px;
   text-align: right;
+  align-self: right;
+  float: right;
 }
 
 #clearer {
   height: 20px;
   width: 100%;
+}
+
+.buttons .left {
+  position: relative;
+  float: left;
+  padding-top: -10px;
+  padding-right: 16px;
+}
+
+.buttons .right {
+  position: relative;
+  float: right;
+  padding-top: -10px;
+  padding-left: 16px;
+}
+
+.buttons .left:hover,
+.buttons .right:hover,
+.defaultbutton:hover {
+    opacity: 0.9; 
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
 }

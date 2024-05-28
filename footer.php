@@ -2,15 +2,15 @@
 <footer>
   <table>
   <tr>
-    <td style="text-align: left; padding-right: 50vw;">
+    <td style="text-align: left; padding-right: 52vw;">
       <p>&copy; <?php echo date("Y");?> TextilDB ReWaMem</p>
     </td>
     <td style="text-align: right;">
       <nav>
       <ul>
+        <li><button class="toggle-button" id="dark-mode-toggle">Switch Theme</button></li>
         <li><a href="kontakt+datenschutz.php">Datenschutz</a></li>
         <li><a href="impressum.php">Impressum</a></li>
-        <li><button class="toggle-button" id="dark-mode-toggle">Switch Theme</button></li>
       </ul>
       </nav>
     </td>

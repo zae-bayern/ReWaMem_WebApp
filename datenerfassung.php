@@ -9,11 +9,11 @@ if (!isset($_SESSION['user_id'])) {
 }
 ?>
 
-<form method=post action="backend/create_site.php">
+<form id="entryForm" method=post action="backend/create_site.php">
 
 	<div id=bodyleft>
 		<p class=side>Bitte füllen Sie für jeden Betrieb/Betriebsteil des Unternehmens
-			ein Formular aus.<br>Die Fomulare werden anonym ausgewertet.</p>
+			ein Formular aus.<br><br>Die Fomulare werden anonym ausgewertet.</p>
 	</div>
 
 	<div id=bodymain>
@@ -48,16 +48,12 @@ if (!isset($_SESSION['user_id'])) {
 		<input type=hidden name=phone value="">
 		<input type=hidden name=email value="">
 
-
-		<p>&nbsp;</p>
 		<div class=input>
-			<label class=left>&nbsp;</label>
 			<div class=opts><b>Bitte markieren Sie die Verbünde, in denen
 					Ihr Unternehmen Mitglied ist:</b><br>&nbsp;</div>
 		</div>
 
 		<div class=input id="mydataorg">
-			<label class=left>&nbsp;</label>
 			<div class="opts">
 				<div class=opt>
 					<input type=checkbox class=check name="org[]" value="0" id="org-0"><label for="org-0"></label>
@@ -108,48 +104,16 @@ if (!isset($_SESSION['user_id'])) {
 			</div>
 			<div class=clearer></div>
 		</div>
-		<script>
-			(function () {
-				var e = document.getElementById('mydataorg');
-				if (!e)
-					return;
-				var boxes = e.getElementsByTagName('INPUT');
-				for (var i = 0; i < boxes.length; i++) {
-					var box = boxes[i];
-					box.onchange = box.onclick = (function (box) {
-						return function () {
-							setTimeout(function () {
-								if (boxes[0] == box && box.checked) {
-									for (var i = 1; i < boxes.length; i++)
-										boxes[i].checked = false;
-									return;
-								}
-								var num = 0;
-								for (var i = 1; i < boxes.length; i++)
-									if (boxes[i].checked)
-										num++;
-								boxes[0].checked = num == 0;
-							}, 100);
-							box.blur();
-							return true;
-						};
-					})(box);
-				}
-			})();
-		</script>
 
-		<p>&nbsp;</p>
 		<div class=input>
-			<label class=left>&nbsp;</label>
 			<div class=opts id=worklabel>
 				<b>Bitte markieren Sie die Arbeitsweisen, die für Sie
-					typisch sind:</b><br>&nbsp;
+					typisch sind:</b>
 			</div>
 		</div>
 
 		<div id=for-type-1>
 			<div class=input>
-				<label class=left>&nbsp;</label>
 				<div class=opts>
 					<input type=checkbox class=check name="work[]" id="work1-wtabwasserfrisch" value="wtabwasserfrisch"
 						checked><label for="work1-wtabwasserfrisch"></label>
@@ -195,7 +159,6 @@ if (!isset($_SESSION['user_id'])) {
 
 		<div id=for-type-2>
 			<div class=input>
-				<label class=left>&nbsp;</label>
 				<div class=opts>
 					<input type=checkbox class=check name="work[]" id="work2-kontakt" value="kontakt"><label
 						for="work2-kontakt"></label>
@@ -212,7 +175,6 @@ if (!isset($_SESSION['user_id'])) {
 
 		<div id=for-type-3>
 			<div class=input>
-				<label class=left>&nbsp;</label>
 				<div class=opts>
 					<input type=checkbox class=check name="work[]" id="work3-kontakt" value="kontakt"><label
 						for="work3-kontakt"></label>
@@ -235,47 +197,6 @@ if (!isset($_SESSION['user_id'])) {
 				</div>
 			</div>
 		</div>
-
-		<script>
-			(function () {
-				function upddisplay() {
-					var found = false;
-					for (var i = 1; i <= 3; i++) {
-						var r = document.getElementById("type-" + i);
-						var e = document.getElementById("for-type-" + i);
-						if (!r || !e)
-							continue;
-						if (r.checked) {
-							e.style.display = '';
-							found = true;
-						} else
-							e.style.display = 'none';
-					}
-					e = document.getElementById("worklabel");
-					if (e)
-						e.style.display = found ? '' : 'none';
-				}
-
-				function setonchange(r) {
-					var old = r.onchange;
-					r.onchange = function () {
-						if (old)
-							old();
-						upddisplay();
-					};
-				}
-
-				for (var i = 1; i <= 3; i++) {
-					var r = document.getElementById("type-" + i);
-					if (!r)
-						continue;
-					setonchange(r);
-				}
-
-				upddisplay();
-			})();
-		</script>
-
 
 	<h2>Eingabe der Verbräuche:</h2>
 
@@ -346,7 +267,6 @@ if (!isset($_SESSION['user_id'])) {
 	</div>
 <script src="dateselect.js?1"></script>
 
-	<p>&nbsp;</p>
 	<p><b>Wir bearbeiten im gewählten Zeitraum<br>
 			[bitte geben Sie dies in absoluten Zahlen an]:</b></p>
 	<div class=input>
@@ -354,7 +274,6 @@ if (!isset($_SESSION['user_id'])) {
 		<input type=text class=text name="trockenwaesche" value="">
 		<div class="inner note">*inkl. Nachwäsche</div>
 	</div>
-	<p>&nbsp;</p>
 	<p><b>Diese Tonnage verteilt sich prozentual auf:</b></p>
 	<div class=input>
 		<label class=left title="Berufskleidung">Berufskleidung:</label>
@@ -388,12 +307,10 @@ if (!isset($_SESSION['user_id'])) {
 		<label class=left title="Reinigungsteile">Reinigungsteile:</label>
 		<input type=text class=text name="reinigungsteile" value="">
 	</div>
-	<div>&nbsp;</div>
 	<div class=input>
 		<label class=left>Sonstiges:</label>
 		<input type=text class=text name="sonstiges" value="">
 	</div>
-	<p>&nbsp;</p>
 	<p><b>Im gewählten Zeitraum wurden verbraucht:</b></p>
 	<div class=input>
 		<label class=left title="Wasser [m³]">Wasser [m³]:</label>
@@ -431,9 +348,6 @@ if (!isset($_SESSION['user_id'])) {
 
 	</div>
 	
-	<div class=clearer></div>
-	<p>&nbsp;</p>
-
 	<div class=buttons>
 		<div class=right>
 			<input type="submit" name="save" value="speichern">
@@ -445,5 +359,6 @@ if (!isset($_SESSION['user_id'])) {
 	</div>
 </form>
 
+<script src="datenerfassung.js"></script>
 
 <?php require_once ('footer.php'); ?>
