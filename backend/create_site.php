@@ -41,7 +41,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['user_id'])) {
 
     $siteData = json_encode($data);
 
-    // Prepare the MySQLi SQL insert or update statement
     if (!$isUpdate) {
         $stmt = $db->prepare("INSERT INTO sites (user_id, site_name, site_data) VALUES (?, ?, ?)");
     } else {

@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('entryForm');
-  const name = document.getElementById('name');
+  const company = document.getElementsByName("company")[0];
+  const site = document.getElementsByName("name")[0];
 
   form.addEventListener('submit', function(event) {
       // Clear previous error messages
@@ -8,13 +9,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
       let valid = true;
 
-      // Check if name is entered
-      //if (name.value.trim() === '') {
-      //    showError(name, 'Name is required.');
-      //    valid = false;
-      //}
+      if (company.value.trim() === '') {
+          showError(company, 'Company name is required.');
+          valid = false;
+      }
 
-      // Prevent form submission if any field is invalid
+      if (site.value.trim() === '') {
+          showError(site, 'Site name is required.');
+          valid = false;
+      }
+
       if (!valid) {
           event.preventDefault();
       }
