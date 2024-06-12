@@ -40,7 +40,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-
 (function () {
   function upddisplay() {
     var found = false;
