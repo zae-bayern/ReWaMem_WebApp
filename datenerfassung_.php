@@ -94,14 +94,6 @@ function populateDropdown() {
         <p class="side">Bitte füllen Sie für jeden Betrieb/Betriebsteil des Unternehmens ein Formular aus.<br><br>Die Formulare werden anonym ausgewertet.</p>
     </div>
 
-    <div id="siteSelector">
-        <label for="siteSelect">Select a site:</label>
-        <select id="siteSelect" name="site_id">
-            <option value="new">New Site</option>
-            <!-- Options will be populated by JavaScript -->
-        </select>
-    </div>
-
     <div id="bodymain">
         <input type="hidden" name="id" id="site_id" value="">
         <div class="defaultbutton"><input type="submit" name="save" value="speichern"></div>
@@ -398,9 +390,8 @@ function populateDropdown() {
             <input type="text" class="text" name="waschmittel" id="waschmittel" value="">
             <div class="inner note">*inkl. Waschhilfsmittel</div>
         </div>
-    </div>
 
-    <div class="buttons">
+		<div class="buttons">
         <div class="right">
             <input type="submit" name="save" value="speichern">
         </div>
@@ -409,6 +400,9 @@ function populateDropdown() {
         </div>
         <div class="clearer"></div>
     </div>
+
+		</div>
+
 </form>
 
 <script>

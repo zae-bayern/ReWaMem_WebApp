@@ -245,6 +245,11 @@ input:checked + .slider:before {
 }
 
 /*Data input*/
+
+#siteSelector {
+  margin-bottom: 36px;
+}
+
 #bodyleft {
   position: fixed;
   float: left;
@@ -303,30 +308,35 @@ input:checked + .slider:before {
   text-align: right;
   align-self: right;
   float: right;
+  position: relative;
+  top: -10px;
 }
 
 #clearer {
   height: 20px;
   width: 100%;
+  clear: both;
 }
 
-.buttons .left {
+#buttons #left {
   position: relative;
   float: left;
   padding-top: -10px;
   padding-right: 16px;
+  width: 150px;
 }
 
-.buttons .right {
+#buttons #right {
   position: relative;
   float: right;
   padding-top: -10px;
   padding-left: 16px;
+  width: 150px;
 }
 
-.buttons .left:hover,
-.buttons .right:hover,
-.defaultbutton:hover {
+#buttons #left:hover,
+#buttons #right:hover,
+#defaultbutton:hover {
     opacity: 0.9; 
 }
 
