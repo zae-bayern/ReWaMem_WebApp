@@ -159,6 +159,11 @@ button:hover {
     padding: 15px;
     border-radius: 5px;
     margin-bottom: 10px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3 ease;
+}
+
+.site:hover {
+  transform: scale(1.05);
 }
 
 #sites-list {
@@ -344,4 +349,34 @@ input:checked + .slider:before {
   color: red;
   font-size: 12px;
   margin-top: 5px;
+}
+
+.timespan-container {
+  margin-top: 20px;
+}
+.timespan-group {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+.timespan-group label {
+  margin-right: 10px;
+}
+.timespan-group .month-checkboxes,
+.timespan-group .year-select {
+  margin-bottom: 15px;
+}
+.input {
+  margin-bottom: 10px;
+}
+.inner.note {
+  font-size: 0.9em;
+  color: #666;
+}
+.left {
+  float: left;
+  width: 150px;
+}
+.clear {
+  clear: both;
 }

@@ -17,6 +17,9 @@ if (!isset($_SESSION['user_id'])) {
 // Fetch user data from the database
 $user_id = $_SESSION['user_id'];
 
+// Get the site ID from the URL if it exists
+$site_id = isset($_GET['site_id']) ? intval($_GET['site_id']) : null;
+
 $sql = "SELECT id, username FROM users WHERE id = ?";
 $stmt = $db->prepare($sql);
 $stmt->bind_param("i", $user_id);
@@ -42,6 +45,7 @@ $result = $stmt->get_result();
 $sites = [];
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
+        $row['site_data'] = json_decode($row['site_data'], true); 
         $sites[] = $row;
     }
 } else {
@@ -97,6 +101,7 @@ function populateDropdown() {
     <div id="bodymain">
         <input type="hidden" name="id" id="site_id" value="">
         <div class="defaultbutton"><input type="submit" name="save" value="speichern"></div>
+        <button type="button" id="deleteSite">Löschen</button>
 
         <div id="bodymainhead">
             <div class="input">
@@ -249,147 +254,124 @@ function populateDropdown() {
             </div>
         </div>
 
-        <h2>Eingabe der Verbräuche:</h2>
 
-        <div id="dateselect">
-            <div>Wählen Sie einen Zeitraum:<br>Sie haben die Möglichkeit, die Daten für ein bestimmtes Jahr, einen bestimmten Monat oder einen bestimmten Tag auswerten zu lassen.</div>
-            <select name="year" id="year">
-                <option value="">Jahr</option>
-                <?php
-                $currentYear = date('Y');
-                for ($i = $currentYear; $i > $currentYear - 5; $i--) {
-                    echo "<option value='$i'>$i</option>";
-                }
-                ?>
-            </select>
-            <select name="month" class="clearable" id="month">
-                <option value="">Monat</option>
-                <option value="1">Januar</option>
-                <option value="2">Februar</option>
-                <option value="3">März</option>
-                <option value="4">April</option>
-                <option value="5">Mai</option>
-                <option value="6">Juni</option>
-                <option value="7">Juli</option>
-                <option value="8">August</option>
-                <option value="9">September</option>
-                <option value="10">Oktober</option>
-                <option value="11">November</option>
-                <option value="12">Dezember</option>
-            </select>
-            <select name="day" class="clearable" id="day">
-                <option value="">Tag</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-                <option value="13">13</option>
-                <option value="14">14</option>
-                <option value="15">15</option>
-                <option value="16">16</option>
-                <option value="17">17</option>
-                <option value="18">18</option>
-                <option value="19">19</option>
-                <option value="20">20</option>
-                <option value="21">21</option>
-                <option value="22">22</option>
-                <option value="23">23</option>
-                <option value="24">24</option>
-                <option value="25">25</option>
-                <option value="26">26</option>
-                <option value="27">27</option>
-                <option value="28">28</option>
-                <option value="29">29</option>
-                <option value="30">30</option>
-                <option value="31">31</option>
-            </select>
-            <div class="clearerleft"></div>
+        <h2>Eingabe der Zeiträume und Verbräuche:</h2>
+
+<div id="timespan-container" class="timespan-container">
+    <div class="timespan-group" id="timespan-group-1">
+        <div class="month-checkboxes">
+            <label>Zeitraum (Monate):</label><br>
+            <input type="checkbox" id="jan-1" name="timespans[0][months][]" value="Januar"><label for="jan-1"> Januar</label>
+            <input type="checkbox" id="feb-1" name="timespans[0][months][]" value="Februar"><label for="feb-1"> Februar</label>
+            <input type="checkbox" id="mar-1" name="timespans[0][months][]" value="März"><label for="mar-1"> März</label>
+            <input type="checkbox" id="apr-1" name="timespans[0][months][]" value="April"><label for="apr-1"> April</label>
+            <input type="checkbox" id="may-1" name="timespans[0][months][]" value="Mai"><label for="may-1"> Mai</label>
+            <input type="checkbox" id="jun-1" name="timespans[0][months][]" value="Juni"><label for="jun-1"> Juni</label>
+            <input type="checkbox" id="jul-1" name="timespans[0][months][]" value="Juli"><label for="jul-1"> Juli</label>
+            <input type="checkbox" id="aug-1" name="timespans[0][months][]" value="August"><label for="aug-1"> August</label>
+            <input type="checkbox" id="sep-1" name="timespans[0][months][]" value="September"><label for="sep-1"> September</label>
+            <input type="checkbox" id="oct-1" name="timespans[0][months][]" value="Oktober"><label for="oct-1"> Oktober</label>
+            <input type="checkbox" id="nov-1" name="timespans[0][months][]" value="November"><label for="nov-1"> November</label>
+            <input type="checkbox" id="dec-1" name="timespans[0][months][]" value="Dezember"><label for="dec-1"> Dezember</label>
         </div>
-        <script src="dateselect.js?1"></script>
+        <div class="year-select">
+            <label for="year-1">Jahr:</label>
+            <select id="year-1" name="timespans[0][year]">
+                <option value="">Jahr auswählen</option>
+                <script>
+                    var currentYear = new Date().getFullYear();
+                    for (var i = currentYear; i >= currentYear - 5; i--) {
+                        document.write('<option value="' + i + '">' + i + '</option>');
+                    }
+                </script>
+            </select>
+        </div>
 
-        <p><b>Wir bearbeiten im gewählten Zeitraum<br>[bitte geben Sie dies in absoluten Zahlen an]:</b></p>
+        <!-- Input fields for consumption data -->
         <div class="input">
             <label class="left" title="Trockenwäsche [t]">Trockenwäsche [t]:</label>
-            <input type="text" class="text" name="trockenwaesche" id="trockenwaesche" value="">
+            <input type="text" class="text" name="timespans[0][trockenwaesche]" id="trockenwaesche-1" value="">
             <div class="inner note">*inkl. Nachwäsche</div>
         </div>
         <p><b>Diese Tonnage verteilt sich prozentual auf:</b></p>
         <div class="input">
             <label class="left" title="Berufskleidung">Berufskleidung:</label>
-            <input type="text" class="text" name="berufskleidung" id="berufskleidung" value="">
+            <input type="text" class="text" name="timespans[0][berufskleidung]" id="berufskleidung-1" value="">
         </div>
         <div class="input">
             <label class="left" title="Krankenhaus/Altenheim flach">Krankenhaus/Altenheim flach:</label>
-            <input type="text" class="text" name="krankenhaus" id="krankenhaus" value="">
+            <input type="text" class="text" name="timespans[0][krankenhaus]" id="krankenhaus-1" value="">
         </div>
         <div class="input">
             <label class="left" title="Hotelwäsche">Hotelwäsche:</label>
-            <input type="text" class="text" name="hotel" id="hotel" value="">
+            <input type="text" class="text" name="timespans[0][hotel]" id="hotel-1" value="">
         </div>
         <div class="input">
             <label class="left" title="Bewohnerwäsche">Bewohnerwäsche:</label>
-            <input type="text" class="text" name="bewohner" id="bewohner" value="">
+            <input type="text" class="text" name="timespans[0][bewohner]" id="bewohner-1" value="">
         </div>
         <div class="input">
             <label class="left" title="Handtuchrollen">Handtuchrollen:</label>
-            <input type="text" class="text" name="handtuch" id="handtuch" value="">
+            <input type="text" class="text" name="timespans[0][handtuch]" id="handtuch-1" value="">
         </div>
         <div class="input">
             <label class="left" title="Fußmatten">Fußmatten:</label>
-            <input type="text" class="text" name="fussmatten" id="fussmatten" value="">
+            <input type="text" class="text" name="timespans[0][fussmatten]" id="fussmatten-1" value="">
         </div>
         <div class="input">
             <label class="left" title="Feuchtwischbezüge">Feuchtwischbezüge:</label>
-            <input type="text" class="text" name="feuchtwisch" id="feuchtwisch" value="">
+            <input type="text" class="text" name="timespans[0][feuchtwisch]" id="feuchtwisch-1" value="">
         </div>
         <div class="input">
             <label class="left" title="Reinigungsteile">Reinigungsteile:</label>
-            <input type="text" class="text" name="reinigungsteile" id="reinigungsteile" value="">
+            <input type="text" class="text" name="timespans[0][reinigungsteile]" id="reinigungsteile-1" value="">
         </div>
         <div class="input">
             <label class="left">Sonstiges:</label>
-            <input type="text" class="text" name="sonstiges" id="sonstiges" value="">
+            <input type="text" class="text" name="timespans[0][sonstiges]" id="sonstiges-1" value="">
         </div>
         <p><b>Im gewählten Zeitraum wurden verbraucht:</b></p>
         <div class="input">
             <label class="left" title="Wasser [m³]">Wasser [m³]:</label>
-            <input type="text" class="text" name="wasser" id="wasser" value="">
+            <input type="text" class="text" name="timespans[0][wasser]" id="wasser-1" value="">
             <div class="inner note">*inkl. Kessel und Sozialbereich</div>
         </div>
         <div class="input">
             <label class="left" title="Strom [kWh]">Strom [kWh]:</label>
-            <input type="text" class="text" name="strom" id="strom" value="">
+            <input type="text" class="text" name="timespans[0][strom]" id="strom-1" value="">
             <div class="inner note">*inkl. Selbsterzeugung</div>
         </div>
         <div class="input">
             <label class="left" title="Öl [l]">Öl [l]:</label>
-            <input type="text" class="text" name="oel" id="oel" value="">
+            <input type="text" class="text" name="timespans[0][oel]" id="oel-1" value="">
         </div>
         <div class="input">
             <label class="left" title="Gas [kWh]">Gas [kWh]:</label>
-            <input type="text" class="text" name="gas" id="gas" value="">
+            <input type="text" class="text" name="timespans[0][gas]" id="gas-1" value="">
         </div>
         <div class="input">
             <label class="left" title="Holzpellets [kWh]">Holzpellets [kWh]:</label>
-            <input type="text" class="text" name="holz" id="holz" value="">
+            <input type="text" class="text" name="timespans[0][holz]" id="holz-1" value="">
         </div>
         <div class="input">
             <label class="left" title="sonstige Energieträger [kWh]">sonstige Energieträger [kWh]:</label>
-            <input type="text" class="text" name="sonstigeenergie" id="sonstigeenergie" value="">
+            <input type="text" class="text" name="timespans[0][sonstigeenergie]" id="sonstigeenergie-1" value="">
         </div>
         <div class="input">
             <label class="left" title="Waschmittel [kg]">Waschmittel [kg]:</label>
-            <input type="text" class="text" name="waschmittel" id="waschmittel" value="">
+            <input type="text" class="text" name="timespans[0][waschmittel]" id="waschmittel-1" value="">
             <div class="inner note">*inkl. Waschhilfsmittel</div>
         </div>
+    </div>
+</div>
+
+<button type="button" onclick="addTimespanField()">weiteren Verbrauchszeitrum zufügen</button>
+
+<script src="dateselect.js"></script>
+
+<!-- -->
+
+<!-- -->
 
 		<div class="buttons">
         <div class="right">
@@ -470,10 +452,50 @@ function populateDropdown() {
         }
     }
 
-    // Populate the dropdown on page load
     window.onload = function() {
         populateDropdown();
         document.getElementById('siteSelect').addEventListener('change', updateFormFields);
+
+        document.getElementById('deleteSite').addEventListener('click', function() {
+        var select = document.getElementById('siteSelect');
+        var selectedSiteId = select.value;
+
+        if (selectedSiteId === "new") {
+            alert("Bitte wählen Sie eine vorhandene Seite aus, um sie zu löschen.");
+            return;
+        }
+
+        if (confirm("Sind Sie sicher, dass Sie diese Seite löschen möchten?")) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "backend/delete_site.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    alert(xhr.responseText);
+                    // Remove the deleted entry from the dropdown and select the previous one
+                    var optionToRemove = select.querySelector('option[value="' + selectedSiteId + '"]');
+                    if (optionToRemove) {
+                        var previousOption = optionToRemove.previousElementSibling;
+                        optionToRemove.remove();
+                        if (previousOption) {
+                            previousOption.selected = true;
+                        } else {
+                            select.value = "new";
+                        }
+                        updateFormFields();
+                    }
+                }
+            };
+            xhr.send("id=" + selectedSiteId);
+        }
+        });
+
+        // If a site ID is provided in the URL, update the form fields
+        var urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('site_id')) {
+            var siteIdFromUrl = urlParams.get('site_id');
+            updateFormFields(siteIdFromUrl);
+        }
     }
 </script>
 

@@ -19,6 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['user_id'])) {
         'month' => $_POST['month'] ?? '',
         'day' => $_POST['day'] ?? '',
         'work' => $_POST['work'] ?? [],
+
         'trockenwaesche' => $_POST['trockenwaesche'] ?? '',
         'berufskleidung' => $_POST['berufskleidung'] ?? '',
         'krankenhaus' => $_POST['krankenhaus'] ?? '',
@@ -36,7 +37,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['user_id'])) {
         'holz' => $_POST['holz'] ?? '',
         'sonstigeenergie' => $_POST['sonstigeenergie'] ?? '',
         'waschmittel' => $_POST['waschmittel'] ?? '',
-        'abwasserandere' => $_POST['abwasserandere'] ?? ''
+        'abwasserandere' => $_POST['abwasserandere'] ?? '',
+
+        'timespans' => $_POST['timespans'] ?? [],
     ];
 
     $siteData = json_encode($data);
@@ -66,6 +69,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['user_id'])) {
     }
 
     $stmt->close();
+
+    header("refresh:3;url=../dashboard.php");
 } else {
     echo "Unauthorized access.";
 }

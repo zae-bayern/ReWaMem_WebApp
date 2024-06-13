@@ -11,8 +11,6 @@ if (!isset($_SESSION['user_id'])) {
 
     <style>
         body { font-family: Arial, sans-serif; margin: 20px; }
-        #sites-list { margin-top: 20px; }
-        .site { margin-bottom: 10px; padding: 10px; background-color: #f0f0f0; }
         form { margin-bottom: 20px; }
         input, button { margin: 5px 0; padding: 10px; }
         button { cursor: pointer; }

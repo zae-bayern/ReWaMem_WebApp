@@ -19,7 +19,10 @@ function fetchSites() {
             sites.forEach(site => {
                 const div = document.createElement('div');
                 div.className = 'site';
-                div.innerHTML = `<strong>${site.site_name}</strong><p>${site.site_data}</p>`;
+                div.innerHTML = `<strong>${site.site_name}</strong><p>${site.site_data.timespans}</p>`;
+                div.addEventListener('click', () => {
+                    window.location.href = `datenerfassung.php?site_id=${site.id}`;
+                });
                 sitesList.appendChild(div);
             });
         }
