@@ -17,9 +17,9 @@ if (!isset($_SESSION['user_id'])) {
     </style> 
 
 
-    <h2>My Sites</h2>
+    <h2>Betriebe</h2>
     <div id="sites-list">
-        <p>No sites yet.</p>
+        <p>Noch keine Betriebe angelegt.</p>
         <!-- Sites will be added here by JavaScript -->
     </div>
 

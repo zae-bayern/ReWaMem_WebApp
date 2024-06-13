@@ -2,10 +2,10 @@ document.addEventListener('DOMContentLoaded', function() {
     fetchSites();
 });
 
-document.getElementById('create-site-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    createSite();
-});
+//document.getElementById('create-site-form').addEventListener('submit', function(e) {
+//    e.preventDefault();
+//    createSite();
+//});
 
 function fetchSites() {
     fetch('backend/get_sites.php')
@@ -15,11 +15,31 @@ function fetchSites() {
         if (sites.length === 0 ) {
         }
         else {
+            console.log(JSON.parse(sites[2].site_data)["timespans"]);
             sitesList.innerHTML = ''; // Clear current sites
             sites.forEach(site => {
+
+                var siteType = "";
+                if (JSON.parse(site.site_data)["type"] == "1") {
+                    siteType = "Wäscherei";
+                }
+                if (JSON.parse(site.site_data)["type"] == "2") {
+                    siteType = "Reinigung";
+                }
+                if (JSON.parse(site.site_data)["type"] == "3") {
+                    siteType = "Mischbetrieb";
+                }
+
+                var timespan_cnt = 0;
+                if (JSON.parse(site.site_data)["timespans"] != null) {
+                    timespan_cnt = JSON.parse(site.site_data)["timespans"].length;
+                }
+
+                //TODO: somehow better present timespans
+
                 const div = document.createElement('div');
                 div.className = 'site';
-                div.innerHTML = `<strong>${site.site_name}</strong><p>${site.site_data.timespans}</p>`;
+                div.innerHTML = `<strong>${site.site_name}</strong>, ` + siteType + `<p>` + timespan_cnt + ` Datenpunkte</p>`;
                 div.addEventListener('click', () => {
                     window.location.href = `datenerfassung.php?site_id=${site.id}`;
                 });
