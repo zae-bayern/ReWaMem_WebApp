@@ -348,7 +348,7 @@ function populateDropdown() {
             <label class="left" title="Wasser [m³]">Frischwasser [m³]:</label>
             <input type="text" class="text" name="timespans[0][wasser]" id="wasser-1" value="">
             <span class="info-button">
-                <div class="tooltip">Informationen</div>
+                <div class="tooltip">Bezogenes Frischwasser für den gesamten Betrieb, inklusive Kessel, Sozialbereich und anderer nicht-prozessrelevanter Bereiche. </div>
             </span>
             <div class="inner note">*inkl. Kessel und Sozialbereich</div>
         </div>
@@ -356,7 +356,7 @@ function populateDropdown() {
             <label class="left" title="Strom [kWh]">Strom [kWh]:</label>
             <input type="text" class="text" name="timespans[0][strom]" id="strom-1" value="">
             <span class="info-button">
-                <div class="tooltip">Informationen</div>
+                <div class="tooltip">Bezogene elektrische Energie für den gesamten Betrieb, einschließlich des durch Selbsterzeugung beigesteuerten Anteils. </div>
             </span>
             <div class="inner note">*inkl. Selbsterzeugung</div>
         </div>
@@ -364,36 +364,36 @@ function populateDropdown() {
             <label class="left" title="Öl [l]">Heizöl [l]:</label>
             <input type="text" class="text" name="timespans[0][oel]" id="oel-1" value="">
             <span class="info-button">
-                <div class="tooltip">Informationen</div>
+                <div class="tooltip">Verbrauchte Menge Heizöl in Litern. Um Ihren Energieverbrauch in kWh zu berechnen, multiplizieren Sie die eingegebene Menge in Litern mit dem Brennwert (10 kWh/L).</div>
             </span>
         </div>
         <!-- TODO: Alternative: Öl (Heizwert) [kWh] -->
         <div class="input">
-            <label class="left" title="Gas [kWh]">Erdgas (Brennwert) [kWh]:</label>
+            <label class="left" title="Gas [kWh]">Erdgas [kWh]:</label>
             <input type="text" class="text" name="timespans[0][gas]" id="gas-1" value="">
             <span class="info-button">
-                <div class="tooltip">Informationen</div>
+                <div class="tooltip">Bitte geben Sie den Brennwert Ihres Erdgasverbrauchs in Kilowattstunden (kWh) ein. Falls Sie Ihren Erdgasverbrauch in Kubikmetern (m³) haben, können Sie diesen mit dem durchschnittlichen Brennwert (z.B. 10,5 kWh/m³) multiplizieren. </div>
             </span>
         </div>
         <div class="input">
-            <label class="left" title="Holzpellets [kWh]">Holzpellets (Heizwert) [kWh]:</label>
+            <label class="left" title="Holzpellets [kWh]">Holzpellets [kWh]:</label>
             <input type="text" class="text" name="timespans[0][holz]" id="holz-1" value="">
             <span class="info-button">
-                <div class="tooltip">Informationen</div>
+                <div class="tooltip">Bitte geben Sie den Brennwert Ihres Verbrauchs an Holzpellets in Kilowattstunden (kWh) ein. Falls Sie Ihren Holzpelletsverbrauch in Kilogramm (kg) haben, können Sie diesen mit dem durchschnittlichen Brennwert (z.B. 4,9 kWh/kg) multiplizieren. </div>
             </span>
         </div>
         <div class="input">
             <label class="left" title="sonstige Energieträger [kWh]">sonstige [kWh]:</label>
             <input type="text" class="text" name="timespans[0][sonstigeenergie]" id="sonstigeenergie-1" value="">
             <span class="info-button">
-                <div class="tooltip">Informationen</div>
+                <div class="tooltip">Bitte geben Sie Ihren Energieverbrauch durch sonstige Energieträger in Kilowattstunden (kWh) an. </div>
             </span>
         </div>
         <div class="input">
             <label class="left" title="Waschmittel [kg]">Waschmittel [kg]:</label>
             <input type="text" class="text" name="timespans[0][waschmittel]" id="waschmittel-1" value="">
             <span class="info-button">
-                <div class="tooltip">Informationen</div>
+                <div class="tooltip">Bitte geben Sie Ihren Verbrauch an Waschmittel(n) in Kilogramm (kg) an. </div>
             </span>
             <div class="inner note">*inkl. Waschhilfsmittel</div>
         </div>
