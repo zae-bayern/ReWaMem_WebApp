@@ -351,6 +351,34 @@ input:checked + .slider:before {
   margin-top: 5px;
 }
 
+.info-button {
+  display: inline-block;
+  margin-left: 5px;
+  cursor: pointer;
+  position: relative;
+}
+
+.info-button::before {
+  content: 'ℹ️';
+  font-size: 1.2em;
+}
+
+.tooltip {
+  display: none;
+  position: absolute;
+  left: 20px;
+  bottom: 25px;
+  background: #f0f0f0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  width: 200px;
+  z-index: 100;
+}
+
+.info-button:hover .tooltip {
+  display: block;
+}
+
 .timespan-container {
   margin-top: 20px;
 }
