@@ -424,8 +424,9 @@ input:checked + .slider:before {
   flex: 0 1 100px;
   background-color: var(--background-color);
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  gap: 10px;
 }
 
 #bottom-datavis {

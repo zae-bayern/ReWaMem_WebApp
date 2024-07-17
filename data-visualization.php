@@ -106,26 +106,73 @@ $userJSON = json_encode($user);
        AND add which one to show as site parameter -->
 
     <div id="top-datavis">
-        <button onclick="showContent('content1')">Option 1</button>
-        <button onclick="showContent('content2')">Option 2</button>
-        <button onclick="showContent('content3')">Option 3</button>
-        <button onclick="showContent('content4')">Option 4</button>
+        <button onclick="showContent('content1')" style="height:56px;">Auswertung in Zahlen</button> 
+        <button onclick="showContent('content2')" style="height:56px;">Grafische Auswertung</button> 
+        <button onclick="showContent('content3')" style="height:56px;">Vergleich Verbräuche</button> 
+        <button onclick="showContent('content4')" style="height:56px;">Sonderauswertung</button>
     </div>
 
     <div id="bottom-datavis" style="width: 100%;">
         <div id="content1" class="content-datavis">
-            <h2>Content 1</h2>
-            <p>This is some text content for option 1.</p>
-            <table border="1" style="margin: 0 auto;">
+            <h2>Auswertung in Zahlen</h2>
+            <p>Betriebsdaten im Branchenvergleich</p>
+            <table border="1" style="table-layout: fixed; margin: 0 auto; margin-top: 8%;">
                 <tr>
-                    <th>Header 1</th>
-                    <th>Header 2</th>
+                    <th style="width: 5%; padding: 6px;"></th>
+                    <th style="width: 5%; padding: 6px;">Mein Betrieb</th>
+                    <th style="width: 5%; padding: 6px;">Minimaler Wert</th>
+                    <th style="width: 5%; padding: 6px;">Maximaler Wert</th>
+                    <th style="width: 5%; padding: 6px;">Durchschnitt</th>
                 </tr>
                 <tr>
-                    <td>Data 1</td>
-                    <td>Data 2</td>
+                    <td>Wasser [l]</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Strom [kWh]</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>therm. Energie [kWh]</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Waschmittel [g]</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
             </table>
+
+            <div style="margin-top: 14%; width: 90%; display: flex; align-items: center; justify-content: space-between; gap: 20px;">
+                <p style="margin: 0; margin-left: 6%;">* Gegenüberstellung der einzelnen Betriebsdaten im Vergleich zum Schnitt der Branche bezogen auf 1kg Wäsche.</p>
+                <hr style="flex-grow: 1; margin: 0 10px; border: none;">
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="width: 20px; height: 20px; background-color: red;"></span>
+                        <span>Dringender Handlungsbedarf</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="width: 20px; height: 20px; background-color: yellow;"></span>
+                        <span>Verbesserung möglich</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="width: 20px; height: 20px; background-color: green;"></span>
+                        <span>Stand der Technik</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <div id="content2" class="content-datavis" style="width: 100%;">

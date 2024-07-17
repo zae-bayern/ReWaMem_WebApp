@@ -5,19 +5,27 @@ document.addEventListener('DOMContentLoaded', function() {
         if (document.documentElement.getAttribute('data-theme') === 'dark') {
             document.documentElement.removeAttribute('data-theme');
             localStorage.removeItem('theme');
-            window.switchPlotlyTheme('light'); // Update plot theme
+            if (window.location.pathname.includes('data-visualization.php')) {
+                window.switchPlotlyTheme('light');
+            }
         } else {
             document.documentElement.setAttribute('data-theme', 'dark');
             localStorage.setItem('theme', 'dark');
-            window.switchPlotlyTheme('dark'); // Update plot theme
+            if (window.location.pathname.includes('data-visualization.php')) {
+                window.switchPlotlyTheme('dark');
+            }
         }
     });
 
     // Load the saved theme preference on page load
     if (localStorage.getItem('theme') === 'dark') {
         document.documentElement.setAttribute('data-theme', 'dark');
-        window.switchPlotlyTheme('dark'); // Update plot theme
+        if (window.location.pathname.includes('data-visualization.php')) {
+            window.switchPlotlyTheme('dark');
+        }
     } else {
-        window.switchPlotlyTheme('light'); // Update plot theme
+        if (window.location.pathname.includes('data-visualization.php')) {
+            window.switchPlotlyTheme('light');
+        }
     }
 });
