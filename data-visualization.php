@@ -92,8 +92,6 @@ $userJSON = json_encode($user);
     var allSitesData = <? echo $allsitesJSON; ?>;
 </script>
 
-<!-- TODO: calculate average value for each entries' timethingy  -->
-
 <!--TODO: JS only interface with all visualization options, all sites data is already here -->
 <!--
     <div id="data-display"></div>
@@ -104,6 +102,9 @@ $userJSON = json_encode($user);
 
 <div id="body-datavis" class="body-datavis">
 
+<!-- TODO: Add dropdown to select from multiple sites (if any)
+       AND add which one to show as site parameter -->
+
     <div id="top-datavis">
         <button onclick="showContent('content1')">Option 1</button>
         <button onclick="showContent('content2')">Option 2</button>
@@ -111,7 +112,7 @@ $userJSON = json_encode($user);
         <button onclick="showContent('content4')">Option 4</button>
     </div>
 
-    <div id="bottom-datavis">
+    <div id="bottom-datavis" style="width: 100%;">
         <div id="content1" class="content-datavis">
             <h2>Content 1</h2>
             <p>This is some text content for option 1.</p>
@@ -127,17 +128,31 @@ $userJSON = json_encode($user);
             </table>
         </div>
 
-        <div id="content2" class="content-datavis">
+        <div id="content2" class="content-datavis" style="width: 100%;">
             <h2>Content 2</h2>
             <p>This is some text content for option 2.</p>
-            <div id="plot1"></div>
+            <div id="plot2" style="width: 100%;"></div>
             <script>
-                var data = [{
+                var data2 = [{
                     x: [1, 2, 3, 4],
                     y: [10, 15, 13, 17],
                     type: 'scatter'
                 }];
-                Plotly.newPlot('plot1', data);
+
+                var plotContainer = document.getElementById('bottom-datavis');
+                var containerWidth = plotContainer.clientWidth;
+                var containerHeight = plotContainer.clientHeight * 0.75;
+
+                var layout2 = {
+                    title: 'Title 2',
+                    font: {size: 16},
+                    width: containerWidth,
+                    height: containerHeight
+                };
+
+                var config2 = {responsive: true, displaylogo: false};
+
+                Plotly.newPlot('plot2', data2, layout2, config2);
             </script>
         </div>
 
@@ -146,17 +161,47 @@ $userJSON = json_encode($user);
             <p>This is some text content for option 3.</p>
         </div>
 
-        <div id="content4" class="content-datavis">
+        <div id="content4" class="content-datavis" style="width: 100%;">
             <h2>Content 4</h2>
             <p>This is some text content for option 4.</p>
-            <div id="plot2"></div>
+            <div id="plot4" style="width: 100%;"></div>
             <script>
-                var data2 = [{
-                    values: [19, 26, 55],
-                    labels: ['Residential', 'Non-Residential', 'Utility'],
-                    type: 'pie'
-                }];
-                Plotly.newPlot('plot2', data2);
+                var trace = {type: 'bar',
+                    x: [1, 2, 3, 4],
+                    y: [5, 10, 2, 8],
+                    marker: {
+                        color: '#C8A2C8',
+                        line: {
+                            width: 2.5
+                        }
+                }};
+
+                var data4 = [ trace ];
+
+                var plotContainer = document.getElementById('bottom-datavis');
+                var containerWidth = plotContainer.clientWidth;
+                var containerHeight = plotContainer.clientHeight * 0.75;
+
+                var layout4 = {
+                    title: 'Title 4',
+                    font: {size: 16},
+                    width: containerWidth,
+                    height: containerHeight
+                };
+
+                var config4 = {responsive: true, displaylogo: false};
+
+                Plotly.newPlot('plot4', data4, layout4, config4);
+            </script>
+            <script>
+                // Add an event listener to update the plot size on window resize
+                window.addEventListener('resize', function() {
+                    var plotContainer = document.getElementById('bottom-datavis');
+                    var newWidth = plotContainer.clientWidth;
+                    var newHeight = plotContainer.clientHeight * 0.75;
+                    Plotly.relayout('plot2', { width: newWidth, height: newHeight });
+                    Plotly.relayout('plot4', { width: newWidth, height: newHeight });
+                });
             </script>
         </div>
     </div>

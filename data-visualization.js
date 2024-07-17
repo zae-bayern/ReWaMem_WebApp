@@ -1,7 +1,3 @@
-document.addEventListener('DOMContentLoaded', function() {
-    fetchDataAndDisplay();
-});
-
 function showContent(contentId) {
     var contents = document.querySelectorAll('.content-datavis');
     contents.forEach(function(content) {
@@ -10,31 +6,10 @@ function showContent(contentId) {
     document.getElementById(contentId).style.display = 'block';
 }
 
-function fetchDataAndDisplay() {
-    fetch('path/to/your/data.json') // Adjust the path to where your JSON data is located
-    // TODO: change to fetch json from SQL
-        .then(response => response.json())
-        .then(data => {
-            const numericalData = extractNumericalData(data);
-            displayData(numericalData);
-            //plotDataWithPlotly(numericalData);
-        })
-        .catch(error => console.error('Error fetching data:', error));
-}
-
 function extractNumericalData(data) {
     // TODO Adjust based on JSON structure
     return data.map(item => ({ label: item.label, value: item.value }));
 }
-
-function displayData(numericalData) {
-    const dataDisplay = document.getElementById('data-display');
-    numericalData.forEach(item => {
-        dataDisplay.innerHTML += `<p>${item.label}: ${item.value}</p>`;
-    });
-}
-
-
 
 //** Extract (id, fieldname) as tuple from json data*/
 function extractNumericalDataFromJSON(jsonData, fieldName) {
