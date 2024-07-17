@@ -2,6 +2,14 @@ document.addEventListener('DOMContentLoaded', function() {
     fetchDataAndDisplay();
 });
 
+function showContent(contentId) {
+    var contents = document.querySelectorAll('.content');
+    contents.forEach(function(content) {
+        content.style.display = 'none';
+    });
+    document.getElementById(contentId).style.display = 'block';
+}
+
 function fetchDataAndDisplay() {
     fetch('path/to/your/data.json') // Adjust the path to where your JSON data is located
     // TODO: change to fetch json from SQL

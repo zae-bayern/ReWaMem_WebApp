@@ -380,3 +380,29 @@ input:checked + .slider:before {
 .clear {
   clear: both;
 }
+
+
+#body-datavis {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+}
+
+#top-datavis {
+  flex: 0 1 100px;
+  background: #f0f0f0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#bottom-datavis {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.content-datavis {
+  display: none;
+}
