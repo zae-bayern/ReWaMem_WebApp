@@ -89,7 +89,7 @@ $userJSON = json_encode($user);
 	//Make data available to JS/HTML
 	var userData = <?php echo $userJSON; ?>;
 	var sitesData = <?php echo $sitesJSON; ?>;
-    var allSitesData = <? echo $allsitesJSON; ?>;
+    var allSitesData = <?php echo $allsitesJSON; ?>;
 </script>
 
 <!--TODO: JS only interface with all visualization options, all sites data is already here -->
@@ -116,7 +116,7 @@ $userJSON = json_encode($user);
         <div id="content1" class="content-datavis">
             <h2>Content 1</h2>
             <p>This is some text content for option 1.</p>
-            <table border="1">
+            <table border="1" style="margin: 0 auto;">
                 <tr>
                     <th>Header 1</th>
                     <th>Header 2</th>
@@ -133,11 +133,35 @@ $userJSON = json_encode($user);
             <p>This is some text content for option 2.</p>
             <div id="plot2" style="width: 100%;"></div>
             <script>
-                var data2 = [{
-                    x: [1, 2, 3, 4],
-                    y: [10, 15, 13, 17],
-                    type: 'scatter'
-                }];
+                // Define the data points for different types
+                var trace1 = {
+                    x: [1, 2, 3, 4, 5],
+                    y: [10, 15, 13, 17, 10],
+                    mode: 'markers',
+                    type: 'scatter',
+                    name: 'Type 1',
+                    marker: { size: 12, symbol: 'circle', color: 'red' }
+                };
+
+                var trace2 = {
+                    x: [2, 3, 4, 5, 6],
+                    y: [16, 5, 11, 9, 15],
+                    mode: 'markers',
+                    type: 'scatter',
+                    name: 'Type 2',
+                    marker: { size: 12, symbol: 'square', color: 'blue' }
+                };
+
+                var trace3 = {
+                    x: [1, 2, 3, 4, 5],
+                    y: [12, 9, 15, 12, 14],
+                    mode: 'markers',
+                    type: 'scatter',
+                    name: 'Type 3',
+                    marker: { size: 12, symbol: 'diamond', color: 'green' }
+                };
+
+                var data2 = [trace1, trace2, trace3];
 
                 var plotContainer = document.getElementById('bottom-datavis');
                 var containerWidth = plotContainer.clientWidth;
@@ -145,7 +169,9 @@ $userJSON = json_encode($user);
 
                 var layout2 = {
                     title: 'Title 2',
-                    font: {size: 16},
+                    font: { size: 16, color: document.documentElement.getAttribute('data-theme') === 'dark' ? 'white' : 'black' },
+                    paper_bgcolor: document.documentElement.getAttribute('data-theme') === 'dark' ? '#2c2c2c' : 'white',
+                    plot_bgcolor: document.documentElement.getAttribute('data-theme') === 'dark' ? '#2c2c2c' : 'white',
                     width: containerWidth,
                     height: containerHeight
                 };
@@ -166,15 +192,67 @@ $userJSON = json_encode($user);
             <p>This is some text content for option 4.</p>
             <div id="plot4" style="width: 100%;"></div>
             <script>
-                var trace = {type: 'bar',
-                    x: [1, 2, 3, 4],
-                    y: [5, 10, 2, 8],
+                var xValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+                var yValues = [5, 10, 2, 8, 7, 3, 9, 12, 4, 6];
+                
+                var trace = {
+                    type: 'bar',
+                    x: xValues,
+                    y: yValues,
                     marker: {
                         color: '#C8A2C8',
                         line: {
                             width: 2.5
                         }
-                }};
+                    }
+                };
+
+                //calculate statistics
+
+                var average = yValues.reduce((a, b) => a + b, 0) / yValues.length;
+                var plus15Percent = average * 1.15;
+                var minus15Percent = average * 0.85;
+
+                var averageLine = {
+                    type: 'line',
+                    x0: 0,
+                    x1: xValues.length + 1,
+                    y0: average,
+                    y1: average,
+                    line: {
+                        color: 'black',
+                        width: 2,
+                        dash: 'dash'
+                    }
+                };
+
+                var plus15Line = {
+                    type: 'line',
+                    x0: 0,
+                    x1: xValues.length + 1,
+                    y0: plus15Percent,
+                    y1: plus15Percent,
+                    line: {
+                        color: 'red',
+                        width: 2,
+                        dash: 'dash'
+                    }
+                };
+
+                var minus15Line = {
+                    type: 'line',
+                    x0: 0,
+                    x1: xValues.length + 1,
+                    y0: minus15Percent,
+                    y1: minus15Percent,
+                    line: {
+                        color: 'green',
+                        width: 2,
+                        dash: 'dash'
+                    }
+                };
+
+                //end calculate statistics
 
                 var data4 = [ trace ];
 
@@ -184,9 +262,12 @@ $userJSON = json_encode($user);
 
                 var layout4 = {
                     title: 'Title 4',
-                    font: {size: 16},
+                    font: { size: 16, color: document.documentElement.getAttribute('data-theme') === 'dark' ? 'white' : 'black' },
+                    paper_bgcolor: document.documentElement.getAttribute('data-theme') === 'dark' ? '#2c2c2c' : 'white',
+                    plot_bgcolor: document.documentElement.getAttribute('data-theme') === 'dark' ? '#2c2c2c' : 'white',
                     width: containerWidth,
-                    height: containerHeight
+                    height: containerHeight,
+                    shapes: [averageLine, plus15Line, minus15Line]
                 };
 
                 var config4 = {responsive: true, displaylogo: false};
