@@ -1,7 +1,7 @@
 <?php require_once ('header.php'); 
       require_once ('backend/db.php'); ?>
 
-<d?php
+<?php
 // Enable error reporting
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -99,6 +99,7 @@ $userJSON = json_encode($user);
     <div id="data-display"></div>
     <div id="plotly-chart" style="width:100%;max-width:700px;height:500px;"></div>
 -->
+    <script src="3rdparty/plotly.min.js"></script>
     <script src="data-visualization.js"></script>
 
 <div id="body-datavis" class="body-datavis">
@@ -110,7 +111,7 @@ $userJSON = json_encode($user);
         <button onclick="showContent('content4')">Option 4</button>
     </div>
 
-    <div id="bottom-datavis>
+    <div id="bottom-datavis">
         <div id="content1" class="content-datavis">
             <h2>Content 1</h2>
             <p>This is some text content for option 1.</p>

@@ -421,7 +421,7 @@ input:checked + .slider:before {
 
 #top-datavis {
   flex: 0 1 100px;
-  background: #f0f0f0;
+  background-color: var(--background-color);
   display: flex;
   justify-content: space-around;
   align-items: center;
