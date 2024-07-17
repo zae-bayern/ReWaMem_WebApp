@@ -373,6 +373,8 @@ input:checked + .slider:before {
   border: 1px solid #ccc;
   width: 200px;
   z-index: 100;
+  background-color: var(--primary-color);
+  color: var(--text-color);
 }
 
 .info-button:hover .tooltip {

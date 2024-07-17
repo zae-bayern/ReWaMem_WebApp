@@ -300,39 +300,50 @@ function populateDropdown() {
             <label class="left" title="Berufskleidung">Berufskleidung:</label>
             <input type="text" class="text" name="timespans[0][berufskleidung]" id="berufskleidung-1" value="">
         </div>
+        <div style="height:20px;"></div>
         <div class="input">
             <label class="left" title="Krankenhaus/Altenheim flach">Krankenhaus/Altenheim flach:</label>
             <input type="text" class="text" name="timespans[0][krankenhaus]" id="krankenhaus-1" value="">
         </div>
+        <div style="height:20px;"></div>
         <div class="input">
             <label class="left" title="Hotelwäsche">Hotelwäsche:</label>
             <input type="text" class="text" name="timespans[0][hotel]" id="hotel-1" value="">
         </div>
+        <div style="height:20px;"></div>
         <div class="input">
             <label class="left" title="Bewohnerwäsche">Bewohnerwäsche:</label>
             <input type="text" class="text" name="timespans[0][bewohner]" id="bewohner-1" value="">
         </div>
+        <div style="height:20px;"></div>
         <div class="input">
             <label class="left" title="Handtuchrollen">Handtuchrollen:</label>
             <input type="text" class="text" name="timespans[0][handtuch]" id="handtuch-1" value="">
         </div>
+        <div style="height:20px;"></div>
         <div class="input">
             <label class="left" title="Fußmatten">Fußmatten:</label>
             <input type="text" class="text" name="timespans[0][fussmatten]" id="fussmatten-1" value="">
         </div>
+        <div style="height:20px;"></div>
         <div class="input">
             <label class="left" title="Feuchtwischbezüge">Feuchtwischbezüge:</label>
             <input type="text" class="text" name="timespans[0][feuchtwisch]" id="feuchtwisch-1" value="">
         </div>
+        <div style="height:20px;"></div>
         <div class="input">
             <label class="left" title="Reinigungsteile">Reinigungsteile:</label>
             <input type="text" class="text" name="timespans[0][reinigungsteile]" id="reinigungsteile-1" value="">
         </div>
+        <div style="height:20px;"></div>
         <div class="input">
             <label class="left">Sonstiges:</label>
             <input type="text" class="text" name="timespans[0][sonstiges]" id="sonstiges-1" value="">
         </div>
-        <p><b>Im gewählten Zeitraum wurden verbraucht:</b></p>
+        <div style="height:50px;"></div>
+        <div class="opts">
+            <p><b>Im gewählten Zeitraum wurden verbraucht:</b></p>
+        </div>
         <div class="input">
             <label class="left" title="Wasser [m³]">Frischwasser [m³]:</label>
             <input type="text" class="text" name="timespans[0][wasser]" id="wasser-1" value="">
@@ -372,7 +383,7 @@ function populateDropdown() {
             </span>
         </div>
         <div class="input">
-            <label class="left" title="sonstige Energieträger [kWh]">sonstige Energieträger (Brenn-/Heizwert) [kWh]:</label>
+            <label class="left" title="sonstige Energieträger [kWh]">sonstige [kWh]:</label>
             <input type="text" class="text" name="timespans[0][sonstigeenergie]" id="sonstigeenergie-1" value="">
             <span class="info-button">
                 <div class="tooltip">Informationen</div>
