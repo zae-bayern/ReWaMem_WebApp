@@ -94,6 +94,10 @@ $userJSON = json_encode($user);
 
 <!--TODO: JS only interface with all visualization options, all sites data is already here -->
     <script src="3rdparty/plotly.min.js"></script>
+    <link rel="stylesheet" href="daterangepicker.css" />
+    <script src="3rdparty/jquery.min.js"></script>
+    <script src="3rdparty/moment.min.js"></script>
+    <script src="3rdparty/daterangepicker.min.js"></script>
     <script src="data-visualization.js"></script>
 
 <div id="body-datavis" class="body-datavis">
@@ -135,7 +139,20 @@ $userJSON = json_encode($user);
             // For example, you could call a function to update plots or data:
             //updateDataBasedOnSelection(selectedValue);
         });
+    </script>
 
+    <input type="text" id="daterange" placeholder="Zeitraum wählen (leer = alles)" style="width:198px;"/>
+
+    <script>
+        // Initialize date range picker
+        $(function() {
+            $('#daterange').daterangepicker({
+                drops: 'down',
+                opens: 'left'
+            }, function(start, end, label) {
+                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+            });
+        });
     </script>
 
     <hr style="margin-top:20px; border: none; border-top: 1px solid #000; width: 63%;">
