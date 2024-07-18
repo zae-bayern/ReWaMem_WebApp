@@ -87,9 +87,9 @@ $userJSON = json_encode($user);
 
 <script>
 	//Make data available to JS/HTML
-	var userData = <?php echo $userJSON; ?>;
-	var sitesData = <?php echo $sitesJSON; ?>;
-    var allSitesData = <?php echo $allsitesJSON; ?>;
+	var userData = <?php echo $userJSON; ?>;            // the user's data
+	var sitesData = <?php echo $sitesJSON; ?>;          // that user's sites
+    var allSitesData = <?php echo $allsitesJSON; ?>;    // other sites as well (anonymized)
 </script>
 
 <!--TODO: JS only interface with all visualization options, all sites data is already here -->
@@ -110,18 +110,21 @@ $userJSON = json_encode($user);
         const dropdown = document.getElementById("siteSelect");
         dropdown.innerHTML = '';
 
-        //TODO: generate these from sitesData
-        const options = [
-            {value: '1', text: 'CHMS/ReWaMem Teststand'},
-            {value: '2', text: 'Testbetrieb'}
-        ];
+        const options = [];
+
+        sitesData.forEach(site => {
+            const opt = document.createElement('option');
+            opt.value = site.id;
+            opt.textContent = site.site_name;
+            dropdown.appendChild(opt);
+        })
 
         options.forEach(option => {
-                const opt = document.createElement('option');
-                opt.value = option.value;
-                opt.textContent = option.text;
-                dropdown.appendChild(opt);
-            });
+            const opt = document.createElement('option');
+            opt.value = option.value;
+            opt.textContent = option.text;
+            dropdown.appendChild(opt);
+        });
 
         //TODO: Add handlers to change plots/data when a option is chosen
         dropdown.addEventListener('change', function() {
