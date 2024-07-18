@@ -147,6 +147,18 @@ $userJSON = json_encode($user);
         // Initialize date range picker
         $(function() {
             $('#daterange').daterangepicker({
+                locale: {
+                    format: 'DD.MM.YYYY',
+                    applyLabel: 'Anwenden',
+                    cancelLabel: 'Abbrechen',
+                    fromLabel: 'Von',
+                    toLabel: 'Bis',
+                    customRangeLabel: 'Benutzerdefiniert',
+                    weekLabel: 'W',
+                    daysOfWeek: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+                    monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+                    firstDay: 1
+                },
                 drops: 'down',
                 opens: 'left'
             }, function(start, end, label) {
