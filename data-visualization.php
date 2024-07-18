@@ -93,10 +93,6 @@ $userJSON = json_encode($user);
 </script>
 
 <!--TODO: JS only interface with all visualization options, all sites data is already here -->
-<!--
-    <div id="data-display"></div>
-    <div id="plotly-chart" style="width:100%;max-width:700px;height:500px;"></div>
--->
     <script src="3rdparty/plotly.min.js"></script>
     <script src="data-visualization.js"></script>
 
@@ -104,6 +100,42 @@ $userJSON = json_encode($user);
 
 <!-- TODO: Add dropdown to select from multiple sites (if any)
        AND add which one to show as site parameter -->
+
+    <label for="siteSelect">Betrieb wählen:</label>
+    <select id="siteSelect">
+        <!-- Options are added with js right below -->
+    </select>
+
+    <script>
+        const dropdown = document.getElementById("siteSelect");
+        dropdown.innerHTML = '';
+
+        //TODO: generate these from sitesData
+        const options = [
+            {value: '1', text: 'CHMS/ReWaMem Teststand'},
+            {value: '2', text: 'Testbetrieb'}
+        ];
+
+        options.forEach(option => {
+                const opt = document.createElement('option');
+                opt.value = option.value;
+                opt.textContent = option.text;
+                dropdown.appendChild(opt);
+            });
+
+        //TODO: Add handlers to change plots/data when a option is chosen
+        dropdown.addEventListener('change', function() {
+            const selectedValue = dropdown.value;
+            console.log('Selected value:', selectedValue);
+
+            // TODO: Add the code you want to execute when a different option is chosen
+            // For example, you could call a function to update plots or data:
+            //updateDataBasedOnSelection(selectedValue);
+        });
+
+    </script>
+
+    <hr style="margin-top:20px; border: none; border-top: 1px solid #000; width: 63%;">
 
     <div id="top-datavis">
         <button onclick="showContent('content1')" style="height:56px;">Auswertung in Zahlen</button> 
@@ -115,7 +147,7 @@ $userJSON = json_encode($user);
     <div id="bottom-datavis" style="width: 100%;">
         <div id="content1" class="content-datavis">
             <h2>Auswertung in Zahlen</h2>
-            <p>Betriebsdaten im Branchenvergleich</p>
+            <p>Betriebsdaten im Branchenvergleich zum Minimal-, Maximal-, und Durchschnittswert.</p>
             <table border="1" style="table-layout: fixed; margin: 0 auto; margin-top: 8%;">
                 <tr>
                     <th style="width: 5%; padding: 6px;"></th>
@@ -124,6 +156,7 @@ $userJSON = json_encode($user);
                     <th style="width: 5%; padding: 6px;">Maximaler Wert</th>
                     <th style="width: 5%; padding: 6px;">Durchschnitt</th>
                 </tr>
+<!--TODO: fill these in from data with js -->
                 <tr>
                     <td>Wasser [l]</td>
                     <td></td>
@@ -153,6 +186,10 @@ $userJSON = json_encode($user);
                     <td></td>
                 </tr>
             </table>
+<!-- TODO: Ersparnis durch Nanofiltration aus Daten generieren -->
+ <div style="margin-top:3%; display:flex; align-items:center;">
+    <p style="margin-left:50%; font-size: 12px;">Mögliche Einsparung von Wasser durch den Einsatz von Nanofiltration: bis zu <span id="nanofilt_sav">0.0</span> L. <br> <a href="https://www.rewamem.de/">Mehr Informationen.</a> </p>
+ </div>
 
             <div style="margin-top: 14%; width: 90%; display: flex; align-items: center; justify-content: space-between; gap: 20px;">
                 <p style="margin: 0; margin-left: 6%;">* Gegenüberstellung der einzelnen Betriebsdaten im Vergleich zum Schnitt der Branche bezogen auf 1kg Wäsche.</p>
@@ -176,8 +213,8 @@ $userJSON = json_encode($user);
         </div>
 
         <div id="content2" class="content-datavis" style="width: 100%;">
-            <h2>Content 2</h2>
-            <p>This is some text content for option 2.</p>
+            <h2>Grafische Auswertung</h2>
+            <p>Grafische Datenauswertung nach Verbräuchen von Wasser, Strom [kWh], thermischer Energie [kWh], und Waschmittel.</p>
             <div id="plot2" style="width: 100%;"></div>
             <script>
                 // Define the data points for different types
@@ -230,13 +267,13 @@ $userJSON = json_encode($user);
         </div>
 
         <div id="content3" class="content-datavis">
-            <h2>Content 3</h2>
-            <p>This is some text content for option 3.</p>
+            <h2>Vergleich Verbräuche</h2>
+            <p>Die Verbräuche des eigenen Betriebs von Wasser, Strom [kWh], thermischer Energie [kWh], und Waschmittel im Vergleich mit angezeigter Waschmenge und Verarbeitungsschwerpunkt.</p>
         </div>
 
         <div id="content4" class="content-datavis" style="width: 100%;">
-            <h2>Content 4</h2>
-            <p>This is some text content for option 4.</p>
+            <h2>Sonderauswertung</h2>
+            <p>Grafische Datenauswertung nach Verbräuchen von Wasser, Strom [kWh], thermischer Energie [kWh], und Waschmittel. Der Branchenvergleich kann hier gesondert nach Art der Wäsche gefiltert durchgeführt werden.</p>
             <div id="plot4" style="width: 100%;"></div>
             <script>
                 var xValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
