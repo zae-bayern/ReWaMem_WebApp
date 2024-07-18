@@ -444,3 +444,105 @@ input:checked + .slider:before {
   gap: 10px;
   margin-bottom: 10px;
 }
+
+.checkbox-list table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.checkbox-list td,
+.checkbox-list th {
+    padding: 10px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+
+/*for markers*/
+.marker {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+
+.circle {
+  border-radius: 50%;
+  background-color: #1f77b4;
+}
+
+.square {
+  background-color: #ff7f0e;
+}
+
+.diamond {
+  width: 20px;
+  height: 20px;
+  background-color: #2ca02c;
+  transform: rotate(45deg);
+}
+
+.cross {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  background-color: transparent;
+}
+
+.cross:before,
+.cross:after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 4px;
+  background-color: #d62728;
+}
+
+.cross:before {
+  transform: rotate(45deg);
+}
+
+.cross:after {
+  transform: rotate(-45deg);
+}
+
+.x {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  background-color: transparent;
+}
+
+.x:before,
+.x:after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 4px;
+  background-color: #9467bd;
+}
+
+.x:before {
+  transform: rotate(45deg);
+}
+
+.x:after {
+  transform: rotate(-45deg);
+}
+
+.red-circle {
+    border-radius: 50%;
+    background-color: red;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid #fa9006; /* Color of the triangle */
+    display: inline-block;
+}

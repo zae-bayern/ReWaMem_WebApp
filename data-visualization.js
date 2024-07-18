@@ -41,22 +41,3 @@ function extractNumericalDataFromJSON(jsonData, fieldName) {
 
     return formattedData;
 }
-
-
-
-document.getElementById('wasserBtn').addEventListener('click', function() {
-            console.log('Wasser button clicked for plot 1');
-            // Implement your logic here
-        });
-        document.getElementById('stromBtn').addEventListener('click', function() {
-            console.log('Strom button clicked for plot 1');
-            // Implement your logic here
-        });
-        document.getElementById('energieBtn').addEventListener('click', function() {
-            console.log('therm. Energie button clicked for plot 1');
-            // Implement your logic here
-        });
-        document.getElementById('waschmittelBtn').addEventListener('click', function() {
-            console.log('Waschmittel button clicked for plot 1');
-            // Implement your logic here
-        });

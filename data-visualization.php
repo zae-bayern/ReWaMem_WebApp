@@ -275,6 +275,68 @@ $userJSON = json_encode($user);
 
                 Plotly.newPlot('plot2', data2, layout2, config2);
             </script>
+
+            <div style="margin-top: 4%; width: 95%; display: flex; align-items: center; justify-content: space-between; gap: 20px;">
+                <p style="margin: 0; margin-left: 6%;">Darstellung der Betriebsdaten für das ausgewählte Unternehmen in <span style="color:orange;">Orange</span>. <br>* Gegenüberstellung der einzelnen Betriebsdaten im Vergleich zum Schnitt der Branche bezogen auf 1kg Wäsche.</p>
+                <hr style="flex-grow: 1; margin: 0 5px; border: none;">
+                
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="width: 20px; height: 20px; background-color: red;"></span>
+                        <span>Dringender Handlungsbedarf</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="width: 20px; height: 20px; background-color: yellow;"></span>
+                        <span>Verbesserung möglich</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="width: 20px; height: 20px; background-color: green;"></span>
+                        <span>Stand der Technik</span>
+                    </div>
+                </div>
+                <hr style="flex-grow: 1; margin: 0 10px; border: none;">
+
+                <div class="checkbox-list">
+                    <table>
+                        <tr>
+                            <td><input type="checkbox" value="Eigener Betrieb"></td>
+                            <td><span class="marker triangle"></span></td>
+                            <td>Eigener Betrieb</td>
+                        <tr>
+                            <td><input type="checkbox" value="berufskleidung"></td>
+                            <td><span class="marker circle"></span></td>
+                            <td>Berufskleidung</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" value="hotelwaesche"></td>
+                            <td><span class="marker square"></span></td>
+                            <td>Hotelwäsche</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" value="krankenhaus"></td>
+                            <td><span class="marker diamond"></span></td>
+                            <td>Krankenhaus / Altenheim flach</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" value="kombination_krankenhaus"></td>
+                            <td><span class="marker cross"></span></td>
+                            <td>Kombination Krankenhaus / Altenheim / Bewohnerwäsche / Reinigungsteile</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" value="kombination_handtuch"></td>
+                            <td><span class="marker x"></span></td>
+                            <td>Kombination aus Handtuchrollen / Fußmatten / Feuchtwischbezügen</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" value="sonstige"></td>
+                            <td><span class="marker red-circle"></span></td>
+                            <td>sonstige</td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+
         </div>
 
         <div id="content3" class="content-datavis">
