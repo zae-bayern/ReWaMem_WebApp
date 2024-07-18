@@ -244,7 +244,7 @@ $userJSON = json_encode($user);
                     mode: 'markers',
                     type: 'scatter',
                     name: 'Type 2',
-                    marker: { size: 12, symbol: 'square', color: 'blue' }
+                    marker: { size: 12, symbol: 'square', color: 'orange' }
                 };
 
                 var trace3 = {
@@ -256,14 +256,50 @@ $userJSON = json_encode($user);
                     marker: { size: 12, symbol: 'diamond', color: 'green' }
                 };
 
-                var data2 = [trace1, trace2, trace3];
+                var trace4 = {
+                    x: [4],
+                    y: [12],
+                    mode: 'markers',
+                    type: 'scatter',
+                    name: 'Eigener Betrieb',
+                    marker: { size: 12, symbol: 'triangle-up', color: 'orange' }
+                };
+
+                var trace5 = {
+                    x: [3, 4, 5, 6, 7],
+                    y: [6, 13, 11, 16.3, 10.2],
+                    mode: 'markers',
+                    type: 'scatter',
+                    name: 'Type 5',
+                    marker: { size: 12, symbol: 'circle', color: 'blue' }
+                };
+
+                var trace6 = {
+                    x: [1,2,4,6],
+                    y: [8.8, 5, 5, 4.5],
+                    mode: 'markers',
+                    type: 'scatter',
+                    name: 'Type 6',
+                    marker: { size: 12, symbol: 'triangle-up', color: 'blue' }
+                };
+
+                var trace7 = {
+                    x: [2,3,5,6],
+                    y: [4.8, 15, 12.6, 8.5],
+                    mode: 'markers',
+                    type: 'scatter',
+                    name: 'Type 7',
+                    marker: { size: 12, symbol: 'diamond', color: 'yellow' }
+                };
+
+                var data2 = [trace1, trace2, trace3, trace4, trace5, trace6, trace7];
 
                 var plotContainer = document.getElementById('bottom-datavis');
                 var containerWidth = plotContainer.clientWidth;
                 var containerHeight = plotContainer.clientHeight * 0.75;
 
                 var layout2 = {
-                    title: 'Title 2',
+                    title: '',
                     font: { size: 16, color: document.documentElement.getAttribute('data-theme') === 'dark' ? 'white' : 'black' },
                     paper_bgcolor: document.documentElement.getAttribute('data-theme') === 'dark' ? '#2c2c2c' : 'white',
                     plot_bgcolor: document.documentElement.getAttribute('data-theme') === 'dark' ? '#2c2c2c' : 'white',
@@ -299,36 +335,36 @@ $userJSON = json_encode($user);
                 <div class="checkbox-list">
                     <table>
                         <tr>
-                            <td><input type="checkbox" value="Eigener Betrieb"></td>
+                            <td><input type="checkbox" value="Eigener Betrieb" checked></td>
                             <td><span class="marker triangle"></span></td>
                             <td>Eigener Betrieb</td>
                         <tr>
-                            <td><input type="checkbox" value="berufskleidung"></td>
+                            <td><input type="checkbox" value="berufskleidung" checked></td>
                             <td><span class="marker circle"></span></td>
                             <td>Berufskleidung</td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" value="hotelwaesche"></td>
+                            <td><input type="checkbox" value="hotelwaesche" checked></td>
                             <td><span class="marker square"></span></td>
                             <td>Hotelwäsche</td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" value="krankenhaus"></td>
+                            <td><input type="checkbox" value="krankenhaus" checked></td>
                             <td><span class="marker diamond"></span></td>
                             <td>Krankenhaus / Altenheim flach</td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" value="kombination_krankenhaus"></td>
-                            <td><span class="marker cross"></span></td>
+                            <td><input type="checkbox" value="kombination_krankenhaus" checked></td>
+                            <td><span class="marker blue-triangle"></span></td>
                             <td>Kombination Krankenhaus / Altenheim / Bewohnerwäsche / Reinigungsteile</td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" value="kombination_handtuch"></td>
-                            <td><span class="marker x"></span></td>
+                            <td><input type="checkbox" value="kombination_handtuch" checked></td>
+                            <td><span class="marker yellow-diamond"></span></td>
                             <td>Kombination aus Handtuchrollen / Fußmatten / Feuchtwischbezügen</td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" value="sonstige"></td>
+                            <td><input type="checkbox" value="sonstige" checked></td>
                             <td><span class="marker red-circle"></span></td>
                             <td>sonstige</td>
                         </tr>

@@ -506,30 +506,6 @@ input:checked + .slider:before {
   transform: rotate(-45deg);
 }
 
-.x {
-  width: 20px;
-  height: 20px;
-  position: relative;
-  background-color: transparent;
-}
-
-.x:before,
-.x:after {
-  content: '';
-  position: absolute;
-  width: 20px;
-  height: 4px;
-  background-color: #9467bd;
-}
-
-.x:before {
-  transform: rotate(45deg);
-}
-
-.x:after {
-  transform: rotate(-45deg);
-}
-
 .red-circle {
     border-radius: 50%;
     background-color: red;
@@ -544,5 +520,22 @@ input:checked + .slider:before {
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
     border-bottom: 20px solid #fa9006; /* Color of the triangle */
+    display: inline-block;
+}
+
+.blue-triangle {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid #1f77b4;
+    display: inline-block;
+}
+
+.yellow-diamond {
+    width: 20px;
+    height: 20px;
+    background-color: #ffeb3b;
+    transform: rotate(45deg);
     display: inline-block;
 }
