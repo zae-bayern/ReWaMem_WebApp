@@ -438,3 +438,9 @@ input:checked + .slider:before {
 .content-datavis {
   display: none;
 }
+
+.button-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}

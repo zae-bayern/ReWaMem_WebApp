@@ -218,6 +218,14 @@ $userJSON = json_encode($user);
         <div id="content2" class="content-datavis" style="width: 100%;">
             <h2>Grafische Auswertung</h2>
             <p>Grafische Datenauswertung nach Verbräuchen von Wasser, Strom [kWh], thermischer Energie [kWh], und Waschmittel.</p>
+
+            <div class="button-container">
+                <button class="action-btn" data-action="wasser">Wasser</button>
+                <button class="action-btn" data-action="strom">Strom [kWh]</button>
+                <button class="action-btn" data-action="energie">therm. Energie [kWh]</button>
+                <button class="action-btn" data-action="waschmittel">Waschmittel</button>
+            </div>
+
             <div id="plot2" style="width: 100%;"></div>
             <script>
                 // Define the data points for different types
@@ -272,11 +280,24 @@ $userJSON = json_encode($user);
         <div id="content3" class="content-datavis">
             <h2>Vergleich Verbräuche</h2>
             <p>Die Verbräuche des eigenen Betriebs von Wasser, Strom [kWh], thermischer Energie [kWh], und Waschmittel im Vergleich mit angezeigter Waschmenge und Verarbeitungsschwerpunkt.</p>
+            <div class="button-container">
+                <button class="action-btn" data-action="wasser">Wasser</butto>
+                <button class="action-btn" data-action="strom">Strom [kWh]</button>
+                <button class="action-btn" data-action="energie">therm. Energie [kWh]</button>
+                <button class="action-btn" data-action="waschmittel">Waschmittel</button>
+            </div>
+
         </div>
 
         <div id="content4" class="content-datavis" style="width: 100%;">
             <h2>Sonderauswertung</h2>
             <p>Grafische Datenauswertung nach Verbräuchen von Wasser, Strom [kWh], thermischer Energie [kWh], und Waschmittel. Der Branchenvergleich kann hier gesondert nach Art der Wäsche gefiltert durchgeführt werden.</p>
+            <div class="button-container">
+                <button class="action-btn" data-action="wasser">Wasser</button>
+                <button class="action-btn" data-action="strom">Strom [kWh]</button>
+                <button class="action-btn" data-action="energie">therm. Energie [kWh]</button>
+                <button class="action-btn" data-action="waschmittel">Waschmittel</button>
+            </div>
             <div id="plot4" style="width: 100%;"></div>
             <script>
                 var xValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -370,7 +391,20 @@ $userJSON = json_encode($user);
                     Plotly.relayout('plot2', { width: newWidth, height: newHeight });
                     Plotly.relayout('plot4', { width: newWidth, height: newHeight });
                 });
+                // Add event listeners for action-buttons
+                document.querySelectorAll('.action-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const action = button.getAttribute('data-action');
+                        console.log(`${action} button clicked`);
+                        // TODO: change plots !
+                    });
+                });
             </script>
+
+            <div style="margin-top: 7%; width: 90%; display: flex; align-items: center; justify-content: space-between; gap: 20px;">
+                <p style="margin: 0; margin-left: 6%;">Darstellung der Betriebsdaten für das ausgewählte Unternehmen in <span style="color:orange;">Orange</span>. <br>* Gegenüberstellung der einzelnen Betriebsdaten im Vergleich zum Schnitt der Branche bezogen auf 1kg Wäsche.</p>
+            </div>
+
         </div>
     </div>
 
