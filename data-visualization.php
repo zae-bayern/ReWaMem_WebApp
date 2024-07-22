@@ -141,7 +141,9 @@ $userJSON = json_encode($user);
         });
     </script>
 
-    <input type="text" id="daterange" placeholder="Zeitraum wählen (leer = alles)" style="width:198px;"/>
+    <div class="daterangepicker-container">
+        <input type="text" id="daterange" class="daterangepicker" placeholder="Zeitraum wählen (leer = alles)" style="width:198px;"/>
+    </div>
 
     <script>
         // Initialize date range picker
@@ -157,7 +159,7 @@ $userJSON = json_encode($user);
                     weekLabel: 'W',
                     daysOfWeek: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
                     monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
-                    firstDay: 1
+                    firstDay: 1 //Mo
                 },
                 drops: 'down',
                 opens: 'left'

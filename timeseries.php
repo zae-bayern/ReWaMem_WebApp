@@ -157,7 +157,9 @@ if (!isset($_SESSION['user_id'])) {
 
 <div class="form-container">
         <div class="input-row">
-            <input type="text" id="daterange" placeholder="Select timespan" />
+            <div class="daterangepicker-container">
+                <input type="text" id="daterange" class="daterangepicker" placeholder="Select timespan" />
+            </div>
             <input type="number" id="input1" placeholder="Consumption 1">
             <input type="number" id="input2" placeholder="Consumption 2">
             <input type="number" id="input3" placeholder="Consumption 3">
@@ -181,7 +183,7 @@ if (!isset($_SESSION['user_id'])) {
                     weekLabel: 'W',
                     daysOfWeek: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
                     monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
-                    firstDay: 1
+                    firstDay: 1 //Mo
                 },
                 drops: 'down',
                 opens: 'left'
@@ -189,6 +191,18 @@ if (!isset($_SESSION['user_id'])) {
                 console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
             });
         });
+        /* Use moment to check if a date is in a range:
+            var dateRangePicker = $('#daterange').data('daterangepicker');
+            var startDate = dateRangePicker.startDate;
+            var endDate = dateRangePicker.endDate;
+            var checkDate = moment($('#checkdate').val());
+
+            if (checkDate.isBetween(startDate, endDate, 'days', '[]')) {
+                $('#result').text('The date is within the range.');
+            } else {
+                $('#result').text('The date is outside the range.');
+            }
+         */
 
         document.getElementById('addButton').addEventListener('click', function() {
             const daterange = document.getElementById('daterange').value;
