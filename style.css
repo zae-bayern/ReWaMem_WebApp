@@ -541,26 +541,3 @@ input:checked + .slider:before {
 }
 
 /* Compatibility with daterangepicker */
-
-/* Ensure daterangepicker appears above other elements */
-.daterangepicker-container .daterangepicker {
-    z-index: 1050;
-}
-
-/* Inherit color from parent to avoid global style interference */
-.daterangepicker-container .daterangepicker .calendar-table td, 
-.daterangepicker-container .daterangepicker .calendar-table th {
-    color: inherit;
-}
-
-/* Ensure calendar background is white */
-.daterangepicker-container .daterangepicker .drp-calendar {
-    background-color: #fff;
-}
-
-/* Customize daterangepicker buttons */
-.daterangepicker-container .daterangepicker .drp-buttons button {
-    background-color: var(--primary-color);
-    color: #fff;
-    border: none;
-}

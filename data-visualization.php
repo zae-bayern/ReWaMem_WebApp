@@ -94,6 +94,8 @@ $userJSON = json_encode($user);
 
 <!--TODO: JS only interface with all visualization options, all sites data is already here -->
     <script src="3rdparty/plotly.min.js"></script>
+    <script src="3rdparty/plotly-locale-de.js"></script>
+    <script>Plotly.setPlotConfig({locale: 'de'})</script>
     <link rel="stylesheet" href="daterangepicker.css" />
     <script src="3rdparty/jquery.min.js"></script>
     <script src="3rdparty/moment.min.js"></script>
@@ -141,9 +143,8 @@ $userJSON = json_encode($user);
         });
     </script>
 
-    <div class="daterangepicker-container">
-        <input type="text" id="daterange" class="daterangepicker" placeholder="Zeitraum wählen (leer = alles)" style="width:198px;"/>
-    </div>
+</script>
+        <input type="text" id="daterange" placeholder="Zeitraum wählen (leer = alles)" value="Zeitraum wählen (leer = alles)" style="width:198px;"/>
 
     <script>
         // Initialize date range picker
@@ -159,12 +160,7 @@ $userJSON = json_encode($user);
                     weekLabel: 'W',
                     daysOfWeek: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
                     monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
-                    firstDay: 1 //Mo
-                },
-                drops: 'down',
-                opens: 'left'
-            }, function(start, end, label) {
-                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+                }
             });
         });
     </script>
@@ -181,7 +177,7 @@ $userJSON = json_encode($user);
     <div id="bottom-datavis" style="width: 100%;">
         <div id="content1" class="content-datavis">
             <h2>Auswertung in Zahlen</h2>
-            <p>Betriebsdaten im Branchenvergleich zum Minimal-, Maximal-, und Durchschnittswert.</p>
+            <p>Betriebsdaten im Branchenvergleich zum Minimal-, Maximal-, und Durchschnittswert bezogen auf 1kg Wäsche.</p>
             <table border="1" style="table-layout: fixed; margin: 0 auto; margin-top: 8%;">
                 <tr>
                     <th style="width: 5%; padding: 6px;"></th>
@@ -193,37 +189,40 @@ $userJSON = json_encode($user);
 <!--TODO: fill these in from data with js -->
                 <tr>
                     <td>Wasser [l]</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td style="background-color: yellow; color: black;">6,750</td>
+                    <td>1,000</td>
+                    <td>29,674</td>
+                    <td>11,082</td>
                 </tr>
                 <tr>
                     <td>Strom [kWh]</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>0,635</td>
+                    <td>0,000</td>
+                    <td>1,620</td>
+                    <td>0,237</td>
                 </tr>
                 <tr>
                     <td>therm. Energie [kWh]</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td style="background-color: green;">0,130</td>
+                    <td>0,001</td>
+                    <td>3,854</td>
+                    <td>1,476</td>
                 </tr>
                 <tr>
                     <td>Waschmittel [g]</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>10,000</td>
+                    <td>0,020</td>
+                    <td>33,657</td>
+                    <td>15,636</td>
                 </tr>
             </table>
 <!-- TODO: Ersparnis durch Nanofiltration aus Daten generieren -->
  <div style="margin-top:3%; display:flex; align-items:center;">
-    <p style="margin-left:50%; font-size: 12px;">Mögliche Einsparung von Wasser durch den Einsatz von Nanofiltration: bis zu <span id="nanofilt_sav">0.0</span> L. <br> <a href="https://www.rewamem.de/">Mehr Informationen.</a> </p>
+    <p style="margin-left:50%; font-size: 12px;">Mögliche Einsparung von Wasser durch den Einsatz von Nanofiltration: bis zu <span id="nanofilt_sav">2.625</span> L. <br> <a href="https://www.rewamem.de/">Mehr Informationen.</a> </p>
  </div>
+ <span class="info-button">
+    <div class="tooltip"> Mögliche Einsparung von Wasser durch den Einsatz von Nanofiltration: bis zu <span id="nanofilt_sav">4.625</span> L. <br> <a href="https://www.rewamem.de/">Mehr Informationen.</a> </div>
+</span>
 
             <div style="margin-top: 14%; width: 90%; display: flex; align-items: center; justify-content: space-between; gap: 20px;">
                 <p style="margin: 0; margin-left: 6%;">* Gegenüberstellung der einzelnen Betriebsdaten im Vergleich zum Schnitt der Branche bezogen auf 1kg Wäsche.</p>
@@ -338,7 +337,7 @@ $userJSON = json_encode($user);
                     height: containerHeight
                 };
 
-                var config2 = {responsive: true, displaylogo: false};
+                var config2 = {responsive: true, displaylogo: false, locale: 'de'};
 
                 Plotly.newPlot('plot2', data2, layout2, config2);
             </script>
@@ -360,6 +359,9 @@ $userJSON = json_encode($user);
                         <span style="width: 20px; height: 20px; background-color: green;"></span>
                         <span>Stand der Technik</span>
                     </div>
+                     <span class="info-button">
+                        <div class="tooltip"> Mögliche Einsparung von Wasser durch den Einsatz von Nanofiltration: bis zu <span id="nanofilt_sav">2.625</span> L. <br> <a href="https://www.rewamem.de/">Mehr Informationen.</a> </div>
+                    </span>
                 </div>
                 <hr style="flex-grow: 1; margin: 0 10px; border: none;">
 
@@ -507,7 +509,7 @@ $userJSON = json_encode($user);
                     shapes: [averageLine, plus15Line, minus15Line]
                 };
 
-                var config4 = {responsive: true, displaylogo: false};
+                var config4 = {responsive: true, displaylogo: false, locale: 'de'};
 
                 Plotly.newPlot('plot4', data4, layout4, config4);
             </script>

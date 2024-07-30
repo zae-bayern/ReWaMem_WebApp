@@ -10,6 +10,8 @@ if (!isset($_SESSION['user_id'])) {
 ?>
 
 <script src="3rdparty/plotly.min.js"></script>
+<script src="3rdparty/plotly-locale-de.js"></script>
+<script>Plotly.setPlotConfig({locale: 'de'})</script>
 <link rel="stylesheet" href="daterangepicker.css" />
 <script src="3rdparty/jquery.min.js"></script>
 <script src="3rdparty/moment.min.js"></script>
@@ -39,8 +41,10 @@ if (!isset($_SESSION['user_id'])) {
             color: red;
             margin-top: 10px;
         }
+
     </style>
 
+<h2>Zeitlicher Verlauf von Betriebsdaten</h2>
 
 <div class="container">
         <label for="plotSelect">Betrieb wählen:</label>
@@ -137,11 +141,16 @@ if (!isset($_SESSION['user_id'])) {
         function updatePlot(plotId) {
             const data = [createTrace(timeSeriesData[plotId], plotId)];
             const layout = {
-                title: `Time Series Plot: ${plotId}`,
-                xaxis: { title: 'Date' },
-                yaxis: { title: 'Value' }
+                title: `Verbrauchsdaten über Zeit: ${plotId}`,
+                xaxis: { title: 'Datum' },
+                yaxis: { title: 'Wert' }
             };
-            Plotly.newPlot('plotContainer', data, layout);
+            const config = {
+                responsive: true,
+                displaylogo: false,
+                locale: 'de'
+            };
+            Plotly.newPlot('plotContainer', data, layout, config);
         }
 
         // Initialize with the first plot
@@ -154,15 +163,39 @@ if (!isset($_SESSION['user_id'])) {
         });
     </script>
 
+    <button id="export-csv">CSV-Export</button>
+    <script>
+        document.getElementById('export-csv').addEventListener('click', function() {
+            var plotData = data[0];
+            var csvContent = "data:text/csv;charset=utf-8,";
+            csvContent += "x,y\n";
+
+            for (var i = 0; i < plotData.x.length; i++) {
+                csvContent += plotData.x[i] + "," + plotData.y[i] + "\n";
+            }
+
+            var encodedUri = encodeURI(csvContent);
+            var link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "plot_data.csv");
+            document.body.appendChild(link);
+
+            link.click();
+        });
+    </script>
+
+    </br>
+    <p>Daten beziehen sich jeweils auf 1kg Trockenwäsche!</p>
 
 <div class="form-container">
         <div class="input-row">
-            <div class="daterangepicker-container">
-                <input type="text" id="daterange" class="daterangepicker" placeholder="Select timespan" />
-            </div>
-            <input type="number" id="input1" placeholder="Consumption 1">
-            <input type="number" id="input2" placeholder="Consumption 2">
-            <input type="number" id="input3" placeholder="Consumption 3">
+            <!--<div class="daterangepicker-container">-->
+                <input type="text" id="daterange" placeholder="Zeitraum wählen" />
+            <!--</div>-->
+            <input type="number" id="input1" placeholder="Wasser [l]">
+            <input type="number" id="input2" placeholder="Strom [kWh]">
+            <input type="number" id="input3" placeholder="therm. Energie [kWh] ">
+            <input type="number" id="input4" placeholder="Waschmittel [g]">
             <button id="addButton">+</button>
         </div>
         <div id="savedRows"></div>
@@ -209,11 +242,12 @@ if (!isset($_SESSION['user_id'])) {
             const input1 = document.getElementById('input1').value;
             const input2 = document.getElementById('input2').value;
             const input3 = document.getElementById('input3').value;
+            const input4 = document.getElementById('input4').value;
             const errorMessage = document.getElementById('errorMessage');
 
             // Basic sanity check: ensure all fields are filled
-            if (!daterange || !input1 || !input2 || !input3) {
-                errorMessage.textContent = 'All fields must be filled.';
+            if (!daterange || !input1 || !input2 || !input3 || !input4) {
+                errorMessage.textContent = 'Alle Eingabefelder müssen aisgefüllt sein.';
                 return;
             }
 
@@ -225,6 +259,7 @@ if (!isset($_SESSION['user_id'])) {
                 <input type="number" value="${input1}" readonly>
                 <input type="number" value="${input2}" readonly>
                 <input type="number" value="${input3}" readonly>
+                <input type="number" value="${input4}" readonly>
                 <button onclick="deleteRow(this)">x</button>
             `;
             document.getElementById('savedRows').appendChild(savedRow);
@@ -234,6 +269,7 @@ if (!isset($_SESSION['user_id'])) {
             document.getElementById('input1').value = '';
             document.getElementById('input2').value = '';
             document.getElementById('input3').value = '';
+            document.getElementById('input4').value = '';
             errorMessage.textContent = ''; // Clear any error messages
         });
 

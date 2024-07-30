@@ -18,7 +18,7 @@ Dieses Tool wertet alle Daten <b>anonymisiert</b> aus und steht allen Betrieben 
 <h4>DTV-Mitglied</h4>
 Bitte melden Sie sich mit Ihren Logindaten an, mit denen Sie auch das Extranet des DTV nutzen.
 Die Nutzung des Ökobench-Tools ist kostenlos. Sollten Sie DTV-Mitglied sein und über keine Logindaten verfügen, wenden Sie sich bitte an den DTV in Bonn:</br>
-info@dtv-bonn.de, Tel.: +49 228 71002270
+<a href="info@dtv-bonn.de">info@dtv-bonn.de</a>, Tel.: +49 228 71002270
 </p>
 
 <p>
