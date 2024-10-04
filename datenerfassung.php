@@ -119,8 +119,10 @@ function populateDropdown() {
             </div>
         </div>
 
+
+
         <div class="input">
-            <label class="opts">Art des Betriebes</label>
+            <label class="opt"><b>Art des Betriebes</b></label>
             <div class="radioopts">
                 <input type="radio" class="radio" name="type" value="1" id="type-1"><label for="type-1"></label>
                 <label for="type-1">Wäscherei</label>
@@ -135,132 +137,205 @@ function populateDropdown() {
         <input type="hidden" name="phone" id="phone" value="">
         <input type="hidden" name="email" id="email" value="">
 
-        <div class="input">
-            <div class="opts"><b>Bitte markieren Sie die Verbünde, in denen Ihr Unternehmen Mitglied ist:</b><br>&nbsp;</div>
-        </div>
-
         <div class="input" id="mydataorg">
-            <div class="opts">
-                <div class="opt">
-                    <input type="checkbox" class="check" name="org[]" value="0" id="org-0"><label for="org-0"></label>
-                    <label for="org-0">ohne</label>
-                </div>
-                <div class="opt">
-                    <input type="checkbox" class="check" name="org[]" value="servitex" id="org-servitex"><label for="org-servitex"></label>
-                    <label for="org-servitex">Servitex</label>
-                </div>
-                <div class="opt">
-                    <input type="checkbox" class="check" name="org[]" value="sitex" id="org-sitex"><label for="org-sitex"></label>
-                    <label for="org-sitex">Sitex</label>
-                </div>
-                <div class="opt">
-                    <input type="checkbox" class="check" name="org[]" value="dressline" id="org-dressline"><label for="org-dressline"></label>
-                    <label for="org-dressline">Dressline</label>
-                </div>
-                <div class="opt">
-                    <input type="checkbox" class="check" name="org[]" value="nwdzentratex" id="org-nwdzentratex"><label for="org-nwdzentratex"></label>
-                    <label for="org-nwdzentratex">NWD Zentratex</label>
-                </div>
-                <div class="opt">
-                    <input type="checkbox" class="check" name="org[]" value="lavantex" id="org-lavantex"><label for="org-lavantex"></label>
-                    <label for="org-lavantex">Lavantex</label>
-                </div>
-                <div class="opt">
-                    <input type="checkbox" class="check" name="org[]" value="tsa" id="org-tsa"><label for="org-tsa"></label>
-                    <label for="org-tsa">TSA</label>
-                </div>
-                <div class="opt">
-                    <input type="checkbox" class="check" name="org[]" value="leosystem" id="org-leosystem"><label for="org-leosystem"></label>
-                    <label for="org-leosystem">Leosystem</label>
-                </div>
-                <div class="opt">
-                    <input type="checkbox" class="check" name="org[]" value="dbl" id="org-dbl"><label for="org-dbl"></label>
-                    <label for="org-dbl">DBL</label>
-                </div>
-                <div class="opt">
-                    <input type="checkbox" class="check" name="org[]" value="diemietwaesche.de" id="org-diemietwaesche.de"><label for="org-diemietwaesche.de"></label>
-                    <label for="org-diemietwaesche.de">diemietwaesche.de</label>
-                </div>
-            </div>
-            <div class="clearer"></div>
+            <div class="opts" style="align: center;"><b>Bitte markieren Sie die Verbünde, in denen Ihr Unternehmen Mitglied ist:</b></div>
+            <table>
+            <tr>
+                <td>
+                <input type="checkbox" class="check" name="org[]" value="0" id="org-0">
+                <label for="org-0">ohne</label>
+                </td>
+                <td>
+                <input type="checkbox" class="check" name="org[]" value="servitex" id="org-servitex">
+                <label for="org-servitex">Servitex</label>
+                </td>
+                <td>
+                <input type="checkbox" class="check" name="org[]" value="sitex" id="org-sitex">
+                <label for="org-sitex">Sitex</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                <input type="checkbox" class="check" name="org[]" value="dressline" id="org-dressline">
+                <label for="org-dressline">Dressline</label>
+                </td>
+                <td>
+                <input type="checkbox" class="check" name="org[]" value="nwdzentratex" id="org-nwdzentratex">
+                <label for="org-nwdzentratex">NWD Zentratex</label>
+                </td>
+                <td>
+                <input type="checkbox" class="check" name="org[]" value="lavantex" id="org-lavantex">
+                <label for="org-lavantex">Lavantex</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                <input type="checkbox" class="check" name="org[]" value="tsa" id="org-tsa">
+                <label for="org-tsa">TSA</label>
+                </td>
+                <td>
+                <input type="checkbox" class="check" name="org[]" value="leosystem" id="org-leosystem">
+                <label for="org-leosystem">Leosystem</label>
+                </td>
+                <td>
+                <input type="checkbox" class="check" name="org[]" value="dbl" id="org-dbl">
+                <label for="org-dbl">DBL</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                <input type="checkbox" class="check" name="org[]" value="diemietwaesche.de" id="org-diemietwaesche.de">
+                <label for="org-diemietwaesche.de">diemietwaesche.de</label>
+                </td>
+                <td></td> <!-- Empty cell for symmetry -->
+            </tr>
+            </table>
         </div>
+        
+
 
         <div class="input">
-            <div class="opts" id="worklabel">
+            <div class="opts" id="worklabel" style="align: center;">
                 <b>Bitte markieren Sie die Arbeitsweisen, die für Sie typisch sind:</b>
             </div>
         </div>
 
-        <div id="for-type-1">
-            <div class="input">
-                <div class="opts">
-                    <input type="checkbox" class="check" name="work[]" id="work1-wtabwasserfrisch" value="wtabwasserfrisch"><label for="work1-wtabwasserfrisch"></label>
-                    <label for="work1-wtabwasserfrisch">Wärmewandler Abwasser zu Frischwasser</label><br>
-                    <input type="checkbox" class="check" name="work[]" id="work1-wrabluftzufrisch" value="wrabluftzufrisch"><label for="work1-wrabluftzufrisch"></label>
-                    <label for="work1-wrabluftzufrisch">Wärmerückgewinnung Abluft zu Frischluft</label><br>
-                    <input type="checkbox" class="check" name="work[]" id="work1-wrabluftzuwasser" value="wrabluftzuwasser"><label for="work1-wrabluftzuwasser"></label>
-                    <label for="work1-wrabluftzuwasser">Wärmerückgewinnung Abluft zu Wasser</label><br>
-                    <input type="checkbox" class="check" name="work[]" id="work1-wasserrueck" value="wasserrueck"><label for="work1-wasserrueck"></label>
-                    <label for="work1-wasserrueck">Wasserrückgewinnung</label><br>
-                    <input type="checkbox" class="check" name="work[]" id="work1-wassermehrfach" value="wassermehrfach"><label for="work1-wassermehrfach"></label>
-                    <label for="work1-wassermehrfach">Wassermehrfachnutzung</label><br>
-                    <input type="checkbox" class="check" name="work[]" id="work1-abwassersiebfilter" value="abwassersiebfilter"><label for="work1-abwassersiebfilter"></label>
-                    <label for="work1-abwassersiebfilter">Abwasserbehandlung: Siebfilter</label><br>
-                    <input type="checkbox" class="check" name="work[]" id="work1-abwasserfaellung" value="abwasserfaellung"><label for="work1-abwasserfaellung"></label>
-                    <label for="work1-abwasserfaellung">Abwasserbehandlung: Fällung/Flockung</label><br>
-                    <input type="checkbox" class="check" name="work[]" id="work1-abwassermikrofiltration" value="abwassermikrofiltration"><label for="work1-abwassermikrofiltration"></label>
-                    <label for="work1-abwassermikrofiltration">Abwasserbehandlung: Mikro-/Ultrafiltration</label><br>
-                    <input type="checkbox" class="check" name="work[]" id="work1-abwasserneutralis" value="abwasserneutralis"><label for="work1-abwasserneutralis"></label>
-                    <label for="work1-abwasserneutralis">Abwasserbehandlung: Neutralisation</label><br>
-                    <input type="checkbox" class="check" name="work[]" id="work1-abwasserbiologie" value="abwasserbiologie"><label for="work1-abwasserbiologie"></label>
-                    <label for="work1-abwasserbiologie">Abwasserbehandlung: Biologie</label><br>
-                    <input type="checkbox" class="check" name="work[]" id="work1-dampfkessel" value="dampfkessel"><label for="work1-dampfkessel"></label>
-                    <label for="work1-dampfkessel">Dampfkessel: Abluft-Wärmewandler (ECO)</label><br>
-                    <input type="checkbox" class="check" name="work[]" id="work1-dampfsystem" value="dampfsystem"><label for="work1-dampfsystem"></label>
-                    <label for="work1-dampfsystem">Dampf-System: Brüdendampf-Nutzung</label><br>
-                </div><br>
-                <label class="left">sonstige Abwasserbehandlung</label>
-                <input type="text" class="text" name="abwasserandere" id="abwasserandere" value=""><br>
-            </div>
-        </div>
+        <div id="for-type-1" class="opts" style="align: center; margin-bottom: 80px;">
+    <div class="input">
+        <table>
+            <tr>
+                <td>
+                    <input type="checkbox" class="check" name="work[]" id="work1-wtabwasserfrisch" value="wtabwasserfrisch">
+                    <label for="work1-wtabwasserfrisch">Wärmewandler Abwasser zu Frischwasser</label>
+                </td>
+                <td>
+                    <input type="checkbox" class="check" name="work[]" id="work1-wrabluftzufrisch" value="wrabluftzufrisch">
+                    <label for="work1-wrabluftzufrisch">Wärmerückgewinnung Abluft zu Frischluft</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" class="check" name="work[]" id="work1-wrabluftzuwasser" value="wrabluftzuwasser">
+                    <label for="work1-wrabluftzuwasser">Wärmerückgewinnung Abluft zu Wasser</label>
+                </td>
+                <td>
+                    <input type="checkbox" class="check" name="work[]" id="work1-wasserrueck" value="wasserrueck">
+                    <label for="work1-wasserrueck">Wasserrückgewinnung</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" class="check" name="work[]" id="work1-wassermehrfach" value="wassermehrfach">
+                    <label for="work1-wassermehrfach">Wassermehrfachnutzung</label>
+                </td>
+                <td>
+                    <input type="checkbox" class="check" name="work[]" id="work1-abwassersiebfilter" value="abwassersiebfilter">
+                    <label for="work1-abwassersiebfilter">Abwasserbehandlung: Siebfilter</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" class="check" name="work[]" id="work1-abwasserfaellung" value="abwasserfaellung">
+                    <label for="work1-abwasserfaellung">Abwasserbehandlung: Fällung/Flockung</label>
+                </td>
+                <td>
+                    <input type="checkbox" class="check" name="work[]" id="work1-abwassermikrofiltration" value="abwassermikrofiltration">
+                    <label for="work1-abwassermikrofiltration">Abwasserbehandlung: Mikro-/Ultrafiltration</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" class="check" name="work[]" id="work1-abwasserneutralis" value="abwasserneutralis">
+                    <label for="work1-abwasserneutralis">Abwasserbehandlung: Neutralisation</label>
+                </td>
+                <td>
+                    <input type="checkbox" class="check" name="work[]" id="work1-abwasserbiologie" value="abwasserbiologie">
+                    <label for="work1-abwasserbiologie">Abwasserbehandlung: Biologie</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" class="check" name="work[]" id="work1-dampfkessel" value="dampfkessel">
+                    <label for="work1-dampfkessel">Dampfkessel: Abluft-Wärmewandler (ECO)</label>
+                </td>
+                <td>
+                    <input type="checkbox" class="check" name="work[]" id="work1-dampfsystem" value="dampfsystem">
+                    <label for="work1-dampfsystem">Dampf-System: Brüdendampf-Nutzung</label>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <label class="left">Sonstige Abwasserbehandlung:</label>
+        <input type="text" class="text" name="abwasserandere" id="abwasserandere" value="">
+    </div>
+</div>
 
-        <div id="for-type-2">
-            <div class="input">
-                <div class="opts">
-                    <input type="checkbox" class="check" name="work[]" id="work2-kontakt" value="kontakt"><label for="work2-kontakt"></label>
-                    <label for="work2-kontakt">Kontaktwasseraufbereitung</label><br>
-                    <input type="checkbox" class="check" name="work[]" id="work2-wasserrueck" value="wasserrueck"><label for="work2-wasserrueck"></label>
-                    <label for="work2-wasserrueck">Wasserrückgewinnung</label><br>
-                    <input type="checkbox" class="check" name="work[]" id="work2-kuehl" value="kuehl"><label for="work2-kuehl"></label>
-                    <label for="work2-kuehl">Kühlwasserrückgewinnung</label><br>
-                </div>
-            </div>
-        </div>
+<div id="for-type-2" class="opts" style="align: center;">
+    <div class="input">
+        <table>
+            <tr>
+                <td>
+                    <input type="checkbox" class="check" name="work[]" id="work2-kontakt" value="kontakt">
+                    <label for="work2-kontakt">Kontaktwasseraufbereitung</label>
+                </td>
+                <td>
+                    <input type="checkbox" class="check" name="work[]" id="work2-wasserrueck" value="wasserrueck">
+                    <label for="work2-wasserrueck">Wasserrückgewinnung</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" class="check" name="work[]" id="work2-kuehl" value="kuehl">
+                    <label for="work2-kuehl">Kühlwasserrückgewinnung</label>
+                </td>
+                <td></td> <!-- Empty cell for alignment -->
+            </tr>
+        </table>
+    </div>
+</div>
 
-        <div id="for-type-3">
-            <div class="input">
-                <div class="opts">
-                    <input type="checkbox" class="check" name="work[]" id="work3-kontakt" value="kontakt"><label for="work3-kontakt"></label>
-                    <label for="work3-kontakt">Kontaktwasseraufbereitung</label><br>
-                    <input type="checkbox" class="check" name="work[]" id="work3-wtabwasserfrisch" value="wtabwasserfrisch"><label for="work3-wtabwasserfrisch"></label>
-                    <label for="work3-wtabwasserfrisch">Wärmewandler Abwasser zu Frischwasser</label><br>
-                    <input type="checkbox" class="check" name="work[]" id="work3-wrabluftzufwasser" value="wrabluftzufwasser"><label for="work3-wrabluftzufwasser"></label>
-                    <label for="work3-wrabluftzufwasser">Wärmerückgewinnung Abluft zu Frischwasser</label><br>
-                    <input type="checkbox" class="check" name="work[]" id="work3-wrabluftzufluft" value="wrabluftzufluft"><label for="work3-wrabluftzufluft"></label>
-                    <label for="work3-wrabluftzufluft">Wärmerückgewinnung Abluft zu Frischluft</label><br>
-                    <input type="checkbox" class="check" name="work[]" id="work3-wasserrueck" value="wasserrueck"><label for="work3-wasserrueck"></label>
-                    <label for="work3-wasserrueck">Wasserrückgewinnung</label><br>
-                    <input type="checkbox" class="check" name="work[]" id="work3-kuehl" value="kuehl"><label for="work3-kuehl"></label>
-                    <label for="work3-kuehl">Kühlwasserrückgewinnung</label><br>
-                </div>
-            </div>
-        </div>
-
+<div id="for-type-3" class="opts" style="align: center;">
+    <div class="input">
+        <table>
+            <tr>
+                <td>
+                    <input type="checkbox" class="check" name="work[]" id="work3-kontakt" value="kontakt">
+                    <label for="work3-kontakt">Kontaktwasseraufbereitung</label>
+                </td>
+                <td>
+                    <input type="checkbox" class="check" name="work[]" id="work3-wtabwasserfrisch" value="wtabwasserfrisch">
+                    <label for="work3-wtabwasserfrisch">Wärmewandler Abwasser zu Frischwasser</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" class="check" name="work[]" id="work3-wrabluftzufwasser" value="wrabluftzufwasser">
+                    <label for="work3-wrabluftzufwasser">Wärmerückgewinnung Abluft zu Frischwasser</label>
+                </td>
+                <td>
+                    <input type="checkbox" class="check" name="work[]" id="work3-wrabluftzufluft" value="wrabluftzufluft">
+                    <label for="work3-wrabluftzufluft">Wärmerückgewinnung Abluft zu Frischluft</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" class="check" name="work[]" id="work3-wasserrueck" value="wasserrueck">
+                    <label for="work3-wasserrueck">Wasserrückgewinnung</label>
+                </td>
+                <td>
+                    <input type="checkbox" class="check" name="work[]" id="work3-kuehl" value="kuehl">
+                    <label for="work3-kuehl">Kühlwasserrückgewinnung</label>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
 
         <h2>Eingabe der Zeiträume und Verbräuche:</h2>
 
 <div id="timespan-container" class="timespan-container">
     <div class="timespan-group" id="timespan-group-1">
+        <!--
         <div class="month-checkboxes">
             <label>Zeitraum (Monate):</label><br>
             <input type="checkbox" id="jan-1" name="timespans[0][months][]" value="Januar"><label for="jan-1"> Januar</label>
@@ -288,6 +363,44 @@ function populateDropdown() {
                 </script>
             </select>
         </div>
+        -->
+
+        <div class="daterange-container">
+        <label for="start-date">Startdatum:</label>
+        <input type="text" id="start-date" placeholder="Startdatum wählen">
+
+        <label for="end-date">Enddatum:</label>
+        <input type="text" id="end-date" placeholder="Enddatum wählen">
+        </div>
+
+        <!-- jQuery & jQuery UI -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+        <script>
+            $(function () {
+                var startDateInput = $('#start-date');
+                var endDateInput = $('#end-date');
+
+                // Datepicker für Startdatum
+                startDateInput.datepicker({
+                    dateFormat: 'dd.mm.yy',
+                    onSelect: function (selectedDate) {
+                        var minDate = startDateInput.datepicker('getDate');
+                        endDateInput.datepicker('option', 'minDate', minDate);
+                    }
+                });
+
+                // Datepicker für Enddatum
+                endDateInput.datepicker({
+                    dateFormat: 'dd.mm.yy',
+                    onSelect: function (selectedDate) {
+                        var maxDate = endDateInput.datepicker('getDate');
+                        startDateInput.datepicker('option', 'maxDate', maxDate);
+                    }
+                });
+            });
+        </script>
 
         <!-- Input fields for consumption data -->
         <div class="input">

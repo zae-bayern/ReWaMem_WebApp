@@ -251,6 +251,65 @@ input:checked + .slider:before {
 
 /*Data input*/
 
+#mydataorg {
+    display: block;
+    margin-bottom: 15px; 
+}
+
+#mydataorg .opts {
+    margin-bottom: 10px; 
+}
+
+#mydataorg table {
+    width: 100%;
+    border-spacing: 10px; 
+    margin: 0 auto; 
+}
+
+#for-type-1, #for-type-2, #for-type-3 {
+    display: block;
+    margin-bottom: 15px; 
+}
+
+#for-type-1 table, #for-type-2 table, #for-type-3 table {
+    width: 100%;
+    border-spacing: 10px; 
+    margin: 0 auto; 
+}
+
+#for-type-1 td, #for-type-2 td, #for-type-3 td {
+    padding: 10px; 
+    vertical-align: top; 
+}
+
+input[type="checkbox"] {
+    margin-right: 5px; 
+}
+
+#for-type-1 .text {
+    margin-top: 10px;
+    width: 100%; 
+    padding: 8px; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#for-type-1 .left {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.radioopts {
+  display: flex;
+  align-items: center;
+}
+
+.opts {
+  display: flex;
+  align-items: center;
+}
+
 #siteSelector {
   margin-bottom: 36px;
 }
@@ -541,3 +600,14 @@ input:checked + .slider:before {
 }
 
 /* Compatibility with daterangepicker */
+
+.daterange-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.daterange-container input {
+  padding: 8px;
+  width: 150px;
+}
