@@ -266,108 +266,168 @@ function addTimespanField() {
     newGroup.id = `timespan-group-${timespanCount}`;
 
     newGroup.innerHTML = `
-        <div class="month-checkboxes">
-            <label>Zeitraum (Monate):</label><br>
-            <input type="checkbox" id="jan-${timespanCount}" name="timespans[${timespanCount - 1}][months][]" value="Januar"><label for="jan-${timespanCount}"> Januar</label>
-            <input type="checkbox" id="feb-${timespanCount}" name="timespans[${timespanCount - 1}][months][]" value="Februar"><label for="feb-${timespanCount}"> Februar</label>
-            <input type="checkbox" id="mar-${timespanCount}" name="timespans[${timespanCount - 1}][months][]" value="März"><label for="mar-${timespanCount}"> März</label>
-            <input type="checkbox" id="apr-${timespanCount}" name="timespans[${timespanCount - 1}][months][]" value="April"><label for="apr-${timespanCount}"> April</label>
-            <input type="checkbox" id="may-${timespanCount}" name="timespans[${timespanCount - 1}][months][]" value="Mai"><label for="may-${timespanCount}"> Mai</label>
-            <input type="checkbox" id="jun-${timespanCount}" name="timespans[${timespanCount - 1}][months][]" value="Juni"><label for="jun-${timespanCount}"> Juni</label>
-            <input type="checkbox" id="jul-${timespanCount}" name="timespans[${timespanCount - 1}][months][]" value="Juli"><label for="jul-${timespanCount}"> Juli</label>
-            <input type="checkbox" id="aug-${timespanCount}" name="timespans[${timespanCount - 1}][months][]" value="August"><label for="aug-${timespanCount}"> August</label>
-            <input type="checkbox" id="sep-${timespanCount}" name="timespans[${timespanCount - 1}][months][]" value="September"><label for="sep-${timespanCount}"> September</label>
-            <input type="checkbox" id="oct-${timespanCount}" name="timespans[${timespanCount - 1}][months][]" value="Oktober"><label for="oct-${timespanCount}"> Oktober</label>
-            <input type="checkbox" id="nov-${timespanCount}" name="timespans[${timespanCount - 1}][months][]" value="November"><label for="nov-${timespanCount}"> November</label>
-            <input type="checkbox" id="dec-${timespanCount}" name="timespans[${timespanCount - 1}][months][]" value="Dezember"><label for="dec-${timespanCount}"> Dezember</label>
+
+    <div id="timespan-container" class="timespan-container">
+    <div class="timespan-group" id="timespan-group-${timespanCount}">
+
+        <div class="daterange-container">
+            <label for="start-date">Startdatum:</label>
+            <input type="text" name="timespans[${timespanCount - 1}][start]" id="startdatum-${timespanCount}" placeholder="Startdatum wählen">
+
+            <label for="end-date">Enddatum:</label>
+            <input type="text" name="timespans[${timespanCount - 1}][end]" id="enddatum-${timespanCount}" placeholder="Enddatum wählen">
         </div>
-        <div class="year-select">
-            <label for="year-${timespanCount}">Jahr:</label>
-            <select id="year-${timespanCount}" name="timespans[${timespanCount - 1}][year]">
-                <option value="">Jahr auswählen</option>
-                ${Array.from({length: 6}, (_, i) => {
-                    const year = new Date().getFullYear() - i;
-                    return `<option value="${year}">${year}</option>`;
-                }).join('')}
-            </select>
-        </div>
-        <button type="button" onclick="removeTimespanField(${timespanCount})">-</button>
+
+        <script src="3rdparty/jquery.min.js"></script>
+        <script src="3rdparty/jquery-ui.js"></script>
+        <script src="3rdparty/datepicker-de.js"></script>
+
+        <script>
+            $(function () {
+                var startDateInput = $("startdatum-${timespanCount}");
+                var endDateInput = $("enddatum-${timespanCount}");
+
+                // Datepicker für Startdatum
+                startDateInput.datepicker({
+                    dateFormat: 'dd.mm.yy',
+                    onSelect: function (selectedDate) {
+                        var minDate = startDateInput.datepicker('getDate');
+                        endDateInput.datepicker('option', 'minDate', minDate);
+                    }
+                }).datepicker("option", $.datepicker.regional["de"]);
+
+                // Datepicker für Enddatum
+                endDateInput.datepicker({
+                    dateFormat: 'dd.mm.yy',
+                    onSelect: function (selectedDate) {
+                        var maxDate = endDateInput.datepicker('getDate');
+                        startDateInput.datepicker('option', 'maxDate', maxDate);
+                    }
+                }).datepicker("option", $.datepicker.regional["de"]);
+
+                startDateInput.datepicker("hide");
+                endDateInput.datepicker("hide");
+
+                // Force-hide the datepicker if visible on page load
+                $(".ui-datepicker").hide();
+
+                // Ensure no input is focused on page load
+                $(document).ready(function() {
+                    $('input').blur(); // Remove focus from any input field
+                });
+            });
+        </script>
 
         <!-- Input fields for consumption data -->
         <div class="input">
-            <label class="left" title="Trockenwäsche [t]">Trockenwäsche [t]:</label>
+            <label class="left" title="Trockenwäsche [t]">Trockenwäsche [t]: </label>
             <input type="text" class="text" name="timespans[${timespanCount - 1}][trockenwaesche]" id="trockenwaesche-${timespanCount}" value="">
-            <div class="inner note">*inkl. Nachwäsche</div>
+            <div class="inner note"> *inkl. Nachwäsche</div>
         </div>
         <p><b>Diese Tonnage verteilt sich prozentual auf:</b></p>
         <div class="input">
             <label class="left" title="Berufskleidung">Berufskleidung:</label>
             <input type="text" class="text" name="timespans[${timespanCount - 1}][berufskleidung]" id="berufskleidung-${timespanCount}" value="">
         </div>
+        <div style="height:20px;"></div>
         <div class="input">
             <label class="left" title="Krankenhaus/Altenheim flach">Krankenhaus/Altenheim flach:</label>
             <input type="text" class="text" name="timespans[${timespanCount - 1}][krankenhaus]" id="krankenhaus-${timespanCount}" value="">
         </div>
+        <div style="height:20px;"></div>
         <div class="input">
             <label class="left" title="Hotelwäsche">Hotelwäsche:</label>
             <input type="text" class="text" name="timespans[${timespanCount - 1}][hotel]" id="hotel-${timespanCount}" value="">
         </div>
+        <div style="height:20px;"></div>
         <div class="input">
             <label class="left" title="Bewohnerwäsche">Bewohnerwäsche:</label>
             <input type="text" class="text" name="timespans[${timespanCount - 1}][bewohner]" id="bewohner-${timespanCount}" value="">
         </div>
+        <div style="height:20px;"></div>
         <div class="input">
             <label class="left" title="Handtuchrollen">Handtuchrollen:</label>
             <input type="text" class="text" name="timespans[${timespanCount - 1}][handtuch]" id="handtuch-${timespanCount}" value="">
         </div>
+        <div style="height:20px;"></div>
         <div class="input">
             <label class="left" title="Fußmatten">Fußmatten:</label>
             <input type="text" class="text" name="timespans[${timespanCount - 1}][fussmatten]" id="fussmatten-${timespanCount}" value="">
         </div>
+        <div style="height:20px;"></div>
         <div class="input">
             <label class="left" title="Feuchtwischbezüge">Feuchtwischbezüge:</label>
             <input type="text" class="text" name="timespans[${timespanCount - 1}][feuchtwisch]" id="feuchtwisch-${timespanCount}" value="">
         </div>
+        <div style="height:20px;"></div>
         <div class="input">
             <label class="left" title="Reinigungsteile">Reinigungsteile:</label>
             <input type="text" class="text" name="timespans[${timespanCount - 1}][reinigungsteile]" id="reinigungsteile-${timespanCount}" value="">
         </div>
+        <div style="height:20px;"></div>
         <div class="input">
             <label class="left">Sonstiges:</label>
             <input type="text" class="text" name="timespans[${timespanCount - 1}][sonstiges]" id="sonstiges-${timespanCount}" value="">
         </div>
-        <p><b>Im gewählten Zeitraum wurden verbraucht:</b></p>
+        <div style="height:50px;"></div>
+        <div>
+            <p><b>Im gewählten Zeitraum wurden verbraucht:</b></p>
+        </div>
         <div class="input">
-            <label class="left" title="Wasser [m³]">Wasser [m³]:</label>
+            <label class="left" title="Wasser [m³]">Frischwasser [m³]:</label>
             <input type="text" class="text" name="timespans[${timespanCount - 1}][wasser]" id="wasser-${timespanCount}" value="">
+            <span class="info-button">
+                <div class="tooltip">Bezogenes Frischwasser für den gesamten Betrieb, inklusive Kessel, Sozialbereich und anderer nicht-prozessrelevanter Bereiche. </div>
+            </span>
             <div class="inner note">*inkl. Kessel und Sozialbereich</div>
         </div>
         <div class="input">
             <label class="left" title="Strom [kWh]">Strom [kWh]:</label>
             <input type="text" class="text" name="timespans[${timespanCount - 1}][strom]" id="strom-${timespanCount}" value="">
+            <span class="info-button">
+                <div class="tooltip">Bezogene elektrische Energie für den gesamten Betrieb, einschließlich des durch Selbsterzeugung beigesteuerten Anteils. </div>
+            </span>
             <div class="inner note">*inkl. Selbsterzeugung</div>
         </div>
         <div class="input">
-            <label class="left" title="Öl [l]">Öl [l]:</label>
+            <label class="left" title="Öl [l]">Heizöl [l]:</label>
             <input type="text" class="text" name="timespans[${timespanCount - 1}][oel]" id="oel-${timespanCount}" value="">
+            <span class="info-button">
+                <div class="tooltip">Verbrauchte Menge Heizöl in Litern. Um Ihren Energieverbrauch in kWh zu berechnen, multiplizieren Sie die eingegebene Menge in Litern mit dem Brennwert (10 kWh/L).</div>
+            </span>
         </div>
         <div class="input">
-            <label class="left" title="Gas [kWh]">Gas [kWh]:</label>
+            <label class="left" title="Gas [kWh]">Erdgas [kWh]:</label>
             <input type="text" class="text" name="timespans[${timespanCount - 1}][gas]" id="gas-${timespanCount}" value="">
+            <span class="info-button">
+                <div class="tooltip">Bitte geben Sie den Brennwert Ihres Erdgasverbrauchs in Kilowattstunden (kWh) ein. Falls Sie Ihren Erdgasverbrauch in Kubikmetern (m³) haben, können Sie diesen mit dem durchschnittlichen Brennwert (z.B. 10,5 kWh/m³) multiplizieren. </div>
+            </span>
         </div>
         <div class="input">
-            <label class="left" title="Holzpellets [kWh]">Holzpellets [kWh]":</label>
+            <label class="left" title="Holzpellets [kWh]">Holzpellets [kWh]:</label>
             <input type="text" class="text" name="timespans[${timespanCount - 1}][holz]" id="holz-${timespanCount}" value="">
+            <span class="info-button">
+                <div class="tooltip">Bitte geben Sie den Brennwert Ihres Verbrauchs an Holzpellets in Kilowattstunden (kWh) ein. Falls Sie Ihren Holzpelletsverbrauch in Kilogramm (kg) haben, können Sie diesen mit dem durchschnittlichen Brennwert (z.B. 4,9 kWh/kg) multiplizieren. </div>
+            </span>
         </div>
         <div class="input">
-            <label class="left" title="sonstige Energieträger [kWh]">sonstige Energieträger [kWh]":</label>
+            <label class="left" title="sonstige Energieträger [kWh]">sonstige [kWh]:</label>
             <input type="text" class="text" name="timespans[${timespanCount - 1}][sonstigeenergie]" id="sonstigeenergie-${timespanCount}" value="">
+            <span class="info-button">
+                <div class="tooltip">Bitte geben Sie Ihren Energieverbrauch durch sonstige Energieträger in Kilowattstunden (kWh) an. </div>
+            </span>
         </div>
         <div class="input">
-            <label class="left" title="Waschmittel [kg]">Waschmittel [kg]":</label>
+            <label class="left" title="Waschmittel [kg]">Waschmittel [kg]:</label>
             <input type="text" class="text" name="timespans[${timespanCount - 1}][waschmittel]" id="waschmittel-${timespanCount}" value="">
+            <span class="info-button">
+                <div class="tooltip">Bitte geben Sie Ihren Verbrauch an Waschmittel(n) in Kilogramm (kg) an. </div>
+            </span>
             <div class="inner note">*inkl. Waschhilfsmittel</div>
         </div>
+    </div>
+</div>
+
     `;
 
     container.appendChild(newGroup);
@@ -376,4 +436,5 @@ function addTimespanField() {
 function removeTimespanField(id) {
     const group = document.getElementById(`timespan-group-${id}`);
     group.remove();
+    timespanCount--;
 }

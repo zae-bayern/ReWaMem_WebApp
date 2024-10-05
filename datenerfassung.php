@@ -335,42 +335,13 @@ function populateDropdown() {
 
 <div id="timespan-container" class="timespan-container">
     <div class="timespan-group" id="timespan-group-1">
-        <!--
-        <div class="month-checkboxes">
-            <label>Zeitraum (Monate):</label><br>
-            <input type="checkbox" id="jan-1" name="timespans[0][months][]" value="Januar"><label for="jan-1"> Januar</label>
-            <input type="checkbox" id="feb-1" name="timespans[0][months][]" value="Februar"><label for="feb-1"> Februar</label>
-            <input type="checkbox" id="mar-1" name="timespans[0][months][]" value="März"><label for="mar-1"> März</label>
-            <input type="checkbox" id="apr-1" name="timespans[0][months][]" value="April"><label for="apr-1"> April</label>
-            <input type="checkbox" id="may-1" name="timespans[0][months][]" value="Mai"><label for="may-1"> Mai</label>
-            <input type="checkbox" id="jun-1" name="timespans[0][months][]" value="Juni"><label for="jun-1"> Juni</label>
-            <input type="checkbox" id="jul-1" name="timespans[0][months][]" value="Juli"><label for="jul-1"> Juli</label>
-            <input type="checkbox" id="aug-1" name="timespans[0][months][]" value="August"><label for="aug-1"> August</label>
-            <input type="checkbox" id="sep-1" name="timespans[0][months][]" value="September"><label for="sep-1"> September</label>
-            <input type="checkbox" id="oct-1" name="timespans[0][months][]" value="Oktober"><label for="oct-1"> Oktober</label>
-            <input type="checkbox" id="nov-1" name="timespans[0][months][]" value="November"><label for="nov-1"> November</label>
-            <input type="checkbox" id="dec-1" name="timespans[0][months][]" value="Dezember"><label for="dec-1"> Dezember</label>
-        </div>
-        <div class="year-select">
-            <label for="year-1">Jahr:</label>
-            <select id="year-1" name="timespans[0][year]">
-                <option value="">Jahr auswählen</option>
-                <script>
-                    var currentYear = new Date().getFullYear();
-                    for (var i = currentYear; i >= currentYear - 5; i--) {
-                        document.write('<option value="' + i + '">' + i + '</option>');
-                    }
-                </script>
-            </select>
-        </div>
-        -->
 
         <div class="daterange-container">
             <label for="start-date">Startdatum:</label>
-            <input type="text" id="start-date" placeholder="Startdatum wählen">
+            <input type="text" id="start-date" name="timespans[0][start]" id="startdatum-1" placeholder="Startdatum wählen">
 
             <label for="end-date">Enddatum:</label>
-            <input type="text" id="end-date" placeholder="Enddatum wählen">
+            <input type="text" id="end-date" name="timespans[0][end]" id="enddatum-1" placeholder="Enddatum wählen">
         </div>
 
         <script src="3rdparty/jquery.min.js"></script>
@@ -465,7 +436,7 @@ function populateDropdown() {
             <input type="text" class="text" name="timespans[0][sonstiges]" id="sonstiges-1" value="">
         </div>
         <div style="height:50px;"></div>
-        <div class="opts">
+        <div>
             <p><b>Im gewählten Zeitraum wurden verbraucht:</b></p>
         </div>
         <div class="input">
@@ -491,7 +462,6 @@ function populateDropdown() {
                 <div class="tooltip">Verbrauchte Menge Heizöl in Litern. Um Ihren Energieverbrauch in kWh zu berechnen, multiplizieren Sie die eingegebene Menge in Litern mit dem Brennwert (10 kWh/L).</div>
             </span>
         </div>
-        <!-- TODO: Alternative: Öl (Heizwert) [kWh] -->
         <div class="input">
             <label class="left" title="Gas [kWh]">Erdgas [kWh]:</label>
             <input type="text" class="text" name="timespans[0][gas]" id="gas-1" value="">
@@ -524,7 +494,7 @@ function populateDropdown() {
     </div>
 </div>
 
-<button type="button" onclick="addTimespanField()">weiteren Verbrauchszeitrum zufügen</button> <!-- Fix to use new code for entry from above! --> 
+<button type="button" onclick="addTimespanField()">weiteren Verbrauchszeitrum zufügen</button> 
 
 <script src="dateselect.js"></script>
 
@@ -532,15 +502,14 @@ function populateDropdown() {
 
 <!-- -->
 
-		<div class="buttons">
+	<div class="buttons">
         <div class="right">
             <input type="submit" name="save" value="speichern">
         </div>
         <div class="clearer"></div>
     </div>
 
-		</div>
-
+</div>
 </form>
 
 <script src="datenerfassung.js"></script>
