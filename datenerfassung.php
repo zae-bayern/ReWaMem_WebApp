@@ -366,16 +366,16 @@ function populateDropdown() {
         -->
 
         <div class="daterange-container">
-        <label for="start-date">Startdatum:</label>
-        <input type="text" id="start-date" placeholder="Startdatum wählen">
+            <label for="start-date">Startdatum:</label>
+            <input type="text" id="start-date" placeholder="Startdatum wählen">
 
-        <label for="end-date">Enddatum:</label>
-        <input type="text" id="end-date" placeholder="Enddatum wählen">
+            <label for="end-date">Enddatum:</label>
+            <input type="text" id="end-date" placeholder="Enddatum wählen">
         </div>
 
-        <!-- jQuery & jQuery UI -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="3rdparty/jquery.min.js"></script>
+        <script src="3rdparty/jquery-ui.js"></script>
+        <script src="3rdparty/datepicker-de.js"></script>
 
         <script>
             $(function () {
@@ -389,7 +389,7 @@ function populateDropdown() {
                         var minDate = startDateInput.datepicker('getDate');
                         endDateInput.datepicker('option', 'minDate', minDate);
                     }
-                });
+                }).datepicker("option", $.datepicker.regional["de"]);
 
                 // Datepicker für Enddatum
                 endDateInput.datepicker({
@@ -398,15 +398,26 @@ function populateDropdown() {
                         var maxDate = endDateInput.datepicker('getDate');
                         startDateInput.datepicker('option', 'maxDate', maxDate);
                     }
+                }).datepicker("option", $.datepicker.regional["de"]);
+
+                startDateInput.datepicker("hide");
+                endDateInput.datepicker("hide");
+
+                // Force-hide the datepicker if visible on page load
+                $(".ui-datepicker").hide();
+
+                // Ensure no input is focused on page load
+                $(document).ready(function() {
+                    $('input').blur(); // Remove focus from any input field
                 });
             });
         </script>
 
         <!-- Input fields for consumption data -->
         <div class="input">
-            <label class="left" title="Trockenwäsche [t]">Trockenwäsche [t]:</label>
+            <label class="left" title="Trockenwäsche [t]">Trockenwäsche [t]: </label>
             <input type="text" class="text" name="timespans[0][trockenwaesche]" id="trockenwaesche-1" value="">
-            <div class="inner note">*inkl. Nachwäsche</div>
+            <div class="inner note"> *inkl. Nachwäsche</div>
         </div>
         <p><b>Diese Tonnage verteilt sich prozentual auf:</b></p>
         <div class="input">
@@ -513,7 +524,7 @@ function populateDropdown() {
     </div>
 </div>
 
-<button type="button" onclick="addTimespanField()">weiteren Verbrauchszeitrum zufügen</button>
+<button type="button" onclick="addTimespanField()">weiteren Verbrauchszeitrum zufügen</button> <!-- Fix to use new code for entry from above! --> 
 
 <script src="dateselect.js"></script>
 
